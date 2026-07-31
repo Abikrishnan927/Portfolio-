@@ -1,0 +1,31 @@
+.floating { animation: float 7s ease-in-out infinite; }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.magnetic:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(90,167,255,.18);
+}
+
+.typing-effect::after {
+  content: "|";
+  display: inline-block;
+  color: var(--accent);
+  animation: blink 1s steps(1) infinite;
+  margin-left: .2rem;
+}
+
+.project-card:hover, .glass-card:hover, .placeholder-card:hover, .contact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.18);
+}
+
+.project-card, .glass-card, .placeholder-card, .contact-card {
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}

@@ -1,0 +1,16 @@
+.mobile-only { display: none; }
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .split-grid, .article-grid, .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .site-header { padding: 1rem 1rem; }
+  .site-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 1rem; background: rgba(5,5,5,.95); border-bottom: 1px solid var(--border); }
+  .site-nav.open { display: flex; }
+  .menu-toggle { display: inline-flex; }
+  .hero { padding-top: 1.2rem; min-height: auto; }
+  .stats-row, .project-grid, .cards-grid { grid-template-columns: 1fr; }
+  .section { padding: 3.5rem 0; }
+}

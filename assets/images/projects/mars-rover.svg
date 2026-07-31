@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" rx="36" fill="#0a0d12"/>
+  <rect x="56" y="70" width="688" height="460" rx="30" fill="url(#g)"/>
+  <circle cx="260" cy="300" r="96" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="540" cy="300" r="96" fill="rgba(255,255,255,0.16)"/>
+  <rect x="220" y="220" width="360" height="160" rx="24" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.22)"/>
+  <path d="M295 265h210" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M290 307h120" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+  <text x="400" y="470" text-anchor="middle" fill="#f5f5f7" font-size="30" font-family="Segoe UI, Arial, sans-serif">Mars Rover</text>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#263649"/><stop offset="100%" stop-color="#07080b"/></linearGradient></defs>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" rx="36" fill="#0f1218"/>
+  <rect x="70" y="80" width="660" height="440" rx="32" fill="url(#g)"/>
+  <rect x="240" y="190" width="320" height="180" rx="20" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.2)"/>
+  <rect x="300" y="240" width="200" height="100" rx="16" fill="rgba(255,255,255,0.16)"/>
+  <path d="M330 220v-40h140v40" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+  <text x="400" y="470" text-anchor="middle" fill="#f5f5f7" font-size="30" font-family="Segoe UI, Arial, sans-serif">Neonatal Care Robot CAD</text>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2c3d50"/><stop offset="100%" stop-color="#06080b"/></linearGradient></defs>
+</svg>
