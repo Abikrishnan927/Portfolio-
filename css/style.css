@@ -232,6 +232,59 @@ main { width: min(960px, calc(100% - 1.2rem)); margin: 0 auto; padding-bottom: 4
 .week-one-card { position: relative; display: grid; grid-template-columns: 50px 58px 1fr; gap: 1rem; align-items: start; padding: 1.3rem 1.35rem; border: 1px solid rgba(154,177,255,.17); border-radius: 1rem; background: linear-gradient(135deg, rgba(25,36,75,.68), rgba(10,16,37,.6)); box-shadow: 0 16px 35px rgba(0,0,0,.14); transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }.week-one-card:hover { transform: translateX(6px); border-color: rgba(70,216,232,.48); box-shadow: 0 20px 42px rgba(0,0,0,.22), 0 0 24px rgba(70,216,232,.08); }.week-one-marker { position: relative; z-index: 1; width: 49px; height: 49px; display: grid; place-items: center; border-radius: 50%; background: #111a35; border: 1px solid rgba(70,216,232,.5); color: var(--cyan); font-size: .72rem; font-weight: 700; letter-spacing: .05em; }.week-one-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: .8rem; background: linear-gradient(145deg, rgba(70,216,232,.2), rgba(139,92,246,.18)); color: #bceff4; font-size: 1.15rem; }.week-one-label { margin: .15rem 0 .35rem; color: var(--cyan); text-transform: uppercase; font-size: .68rem; font-weight: 700; letter-spacing: .16em; }.week-one-card h3 { color: var(--primary); font-size: 1.1rem; margin-bottom: .6rem; }.week-one-card ul { display: grid; gap: .35rem; list-style: none; }.week-one-card li { position: relative; padding-left: .95rem; color: var(--muted); font-size: .91rem; line-height: 1.55; }.week-one-card li::before { content: "•"; position: absolute; left: 0; color: var(--cyan); }
 .week-one-takeaways { display: grid; grid-template-columns: minmax(190px, .7fr) minmax(0, 1.3fr); gap: 2rem; margin: 0 0 4.5rem; padding: 1.7rem; background: linear-gradient(135deg, rgba(25,36,75,.76), rgba(10,16,37,.7)); }.week-one-takeaways ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem 1rem; list-style: none; }.week-one-takeaways li { color: var(--secondary); font-size: .9rem; line-height: 1.45; }.week-one-takeaways li::before { content: "✓"; display: inline-grid; place-items: center; width: 1.15rem; height: 1.15rem; margin-right: .5rem; border-radius: 50%; background: rgba(70,216,232,.16); color: var(--cyan); font-size: .72rem; font-weight: 700; animation: checkPulse 2.4s ease-in-out infinite; }.week-one-skills { padding: 0 0 5rem; }.week-one-skills h2 { margin-bottom: 1.35rem; }.week-one-tags { display: flex; flex-wrap: wrap; gap: .65rem; }.week-one-tags span { padding: .62rem .85rem; border: 1px solid rgba(142,165,255,.25); border-radius: 999px; background: rgba(142,165,255,.09); color: var(--secondary); font-size: .85rem; transition: transform .25s ease, color .25s ease, border-color .25s ease; }.week-one-tags span:hover { transform: translateY(-3px); color: var(--primary); border-color: var(--cyan); }.week-one-tags span:nth-child(3n + 1) { animation: tagFloat 3s ease-in-out infinite; }.week-one-tags span:nth-child(3n + 2) { animation: tagFloat 3.3s .35s ease-in-out infinite; }.week-one-tags span:nth-child(3n) { animation: tagFloat 2.8s .6s ease-in-out infinite; }
 @media (max-width: 680px) { .week-one-hero { padding: 3.2rem 0 2.8rem; }.week-one-heading { display: block; }.week-one-gallery-grid { grid-template-columns: 1fr; }.week-one-card { grid-template-columns: 44px 1fr; padding: 1.1rem; }.week-one-icon { grid-column: 2; grid-row: 1; margin-bottom: -.25rem; }.week-one-card > div:last-child { grid-column: 2; }.week-one-timeline::before { left: 21px; }.week-one-marker { width: 43px; height: 43px; }.week-one-takeaways { grid-template-columns: 1fr; gap: 1.3rem; padding: 1.2rem; }.week-one-takeaways ul { grid-template-columns: 1fr; } }
+
+/* ProtoSem Week 2 */
+.week-two-page { width: min(1040px, calc(100% - 1.2rem)); }
+.week-two-hero { padding: 5.5rem 0 4rem; max-width: 980px; }
+.week-two-hero h1 { color: var(--primary); margin: 0; font-size: clamp(2.5rem, 5.8vw, 4.9rem); line-height: .98; letter-spacing: -.055em; }
+.week-two-hero h1 span { color: #7fe3d6; }
+.week-two-subtitle { margin: 1.2rem 0 .8rem; color: var(--secondary); font-size: clamp(1rem, 2vw, 1.28rem); font-weight: 600; }
+.week-two-description { max-width: 780px; color: var(--muted); font-size: 1rem; line-height: 1.8; }
+.week-two-gallery { padding: 0 0 3rem; }
+.week-two-gallery-header { margin-bottom: 1.2rem; }
+.week-two-gallery-header h2 { color: var(--primary); font-size: clamp(1.55rem, 3vw, 2.35rem); line-height: 1.12; letter-spacing: -.04em; margin: 0; }
+.week-two-gallery-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+.week-two-gallery-grid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 1rem; border: 1px solid rgba(120,180,255,.18); background: rgba(13,20,35,.45); box-shadow: 0 16px 35px rgba(0,0,0,.14); transition: transform .3s ease, box-shadow .3s ease; }
+.week-two-gallery-grid img:hover { transform: translateY(-4px); box-shadow: 0 24px 40px rgba(0,0,0,.24), 0 0 18px rgba(96,165,250,.18); }
+.week-two-section { padding: 1.5rem 0 4rem; }
+.week-two-heading { margin-bottom: 1.8rem; }
+.week-two-heading h2 { color: var(--primary); font-size: clamp(1.55rem, 3vw, 2.35rem); line-height: 1.12; letter-spacing: -.04em; }
+.week-two-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.week-two-card { position: relative; padding: 1.2rem 1.2rem 1.1rem; border-radius: 1.2rem; border: 1px solid rgba(117,173,255,.18); background: linear-gradient(135deg, rgba(16,31,54,.82), rgba(10,15,25,.7)); box-shadow: 0 16px 40px rgba(0,0,0,.16); overflow: hidden; transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+.week-two-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 20% 0%, rgba(97,200,245,.18), transparent 40%); opacity: .85; pointer-events: none; }
+.week-two-card:hover { transform: translateY(-5px); border-color: rgba(127,227,214,.38); box-shadow: 0 22px 48px rgba(0,0,0,.2), 0 0 24px rgba(82,169,248,.12); }
+.week-two-card-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .9rem; position: relative; z-index: 1; }
+.week-two-icon { width: 48px; height: 48px; border-radius: .9rem; display: grid; place-items: center; background: linear-gradient(135deg, rgba(127,227,214,.2), rgba(90,141,255,.18)); border: 1px solid rgba(127,227,214,.25); color: #d8fef9; font-size: 1.2rem; }
+.week-two-card-tag { display: inline-flex; align-items: center; padding: .45rem .6rem; border-radius: 999px; background: rgba(149,190,255,.08); border: 1px solid rgba(149,190,255,.2); color: #cfe1ff; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+.week-two-card h3 { position: relative; z-index: 1; color: var(--primary); font-size: 1.18rem; margin-bottom: .7rem; }
+.week-two-card ul { position: relative; z-index: 1; list-style: none; display: grid; gap: .45rem; }
+.week-two-card li { position: relative; padding-left: .9rem; color: var(--muted); line-height: 1.6; font-size: .92rem; }
+.week-two-card li::before { content: "•"; position: absolute; left: 0; color: #7fe3d6; }
+.week-two-card-wide { grid-column: 1 / -1; }
+.week-two-journey { padding: 0 0 3.5rem; }
+.week-two-journey h2 { color: var(--primary); font-size: clamp(1.55rem, 3vw, 2.35rem); line-height: 1.12; letter-spacing: -.04em; margin-bottom: 1.2rem; }
+.week-two-timeline { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .8rem; }
+.week-two-step { display: flex; align-items: center; justify-content: center; gap: .55rem; padding: .9rem .7rem; border-radius: 1rem; border: 1px solid rgba(127,227,214,.2); background: rgba(12,20,34,.7); color: var(--secondary); font-size: .92rem; text-align: center; transition: transform .25s ease, border-color .25s ease; }
+.week-two-step:hover { transform: translateY(-3px); border-color: rgba(127,227,214,.42); }
+.week-two-step-label { color: #8fe8ff; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: .68rem; }
+.week-two-step-arrow { color: #69dfcf; font-weight: 700; }
+.week-two-step strong { color: var(--primary); font-size: .92rem; }
+.week-two-takeaways { display: grid; grid-template-columns: minmax(180px, .8fr) minmax(0, 1.4fr); gap: 1.6rem; margin: 0 0 4rem; padding: 1.6rem; background: linear-gradient(135deg, rgba(16,31,54,.8), rgba(10,15,25,.7)); }
+.week-two-takeaways ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem 1rem; list-style: none; }
+.week-two-takeaways li { color: var(--secondary); font-size: .92rem; line-height: 1.5; }
+.week-two-takeaways li::before { content: "✔"; display: inline-grid; place-items: center; width: 1.1rem; height: 1.1rem; margin-right: .55rem; border-radius: 50%; background: rgba(127,227,214,.12); color: #7fe3d6; font-size: .74rem; font-weight: 700; animation: checkPulse 2.4s ease-in-out infinite; }
+.week-two-skills { padding: 0 0 5rem; }
+.week-two-skills h2 { margin-bottom: 1.3rem; color: var(--primary); font-size: clamp(1.55rem, 3vw, 2.35rem); line-height: 1.12; letter-spacing: -.04em; }
+.week-two-tags { display: flex; flex-wrap: wrap; gap: .7rem; }
+.week-two-tags span { padding: .62rem .85rem; border-radius: 999px; border: 1px solid rgba(134,214,255,.22); background: rgba(134,214,255,.08); color: var(--secondary); font-size: .84rem; transition: transform .25s ease, border-color .25s ease, color .25s ease; }
+.week-two-tags span:hover { transform: translateY(-3px); color: var(--primary); border-color: rgba(127,227,214,.42); }
+.week-two-tags span:nth-child(3n + 1) { animation: tagFloat 3s ease-in-out infinite; }
+.week-two-tags span:nth-child(3n + 2) { animation: tagFloat 3.3s .35s ease-in-out infinite; }
+.week-two-tags span:nth-child(3n) { animation: tagFloat 2.8s .6s ease-in-out infinite; }
+
+@media (max-width: 900px) { .week-two-gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .week-two-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .week-two-hero { padding: 3.2rem 0 2.8rem; } .week-two-gallery-grid { grid-template-columns: 1fr; } .week-two-card-grid { grid-template-columns: 1fr; } .week-two-timeline { grid-template-columns: 1fr; } .week-two-takeaways { grid-template-columns: 1fr; gap: 1.2rem; padding: 1.2rem; } .week-two-takeaways ul { grid-template-columns: 1fr; } }
+
 .page-hero { padding: 2.7rem 0 1.8rem; }
 .page-content { display: grid; gap: 1.1rem; }
 .page-card { padding: 1.25rem; }
