@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProtoSem Week 3 | Abikrishnan P.</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    :root {
+      --week3-bg: rgba(10, 18, 26, 0.72);
+      --week3-panel: rgba(18, 28, 39, 0.8);
+      --week3-panel-strong: rgba(20, 32, 47, 0.9);
+      --week3-line: rgba(120, 180, 255, 0.22);
+      --week3-accent: #7fe3d6;
+      --week3-accent-2: #76aefc;
+      --week3-text: #edf6ff;
+      --week3-muted: #a4b6c9;
+    }
+
+    .week-three-page {
+      width: min(1080px, calc(100% - 1.2rem));
+      margin: 0 auto;
+      padding-bottom: 4rem;
+    }
+
+    .week-three-hero {
+      padding: 5.4rem 0 3.5rem;
+      max-width: 980px;
+    }
+
+    .week-three-hero h1 {
+      margin: 0;
+      color: var(--primary);
+      font-size: clamp(2.7rem, 5.6vw, 4.9rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .week-three-hero h1 span {
+      color: var(--week3-accent);
+    }
+
+    .week-three-subtitle {
+      margin: 1.1rem 0 .8rem;
+      color: var(--secondary);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 600;
+    }
+
+    .week-three-description {
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .section-header {
+      margin-bottom: 1.1rem;
+    }
+
+    .section-header h2 {
+      color: var(--primary);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      line-height: 1.14;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    .week-three-gallery,
+    .week-three-journey,
+    .week-three-days,
+    .week-three-workflow,
+    .week-three-paper,
+    .week-three-summary,
+    .week-three-reflection {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .week-three-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .week-three-gallery-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 1rem;
+      border: 1px solid var(--week3-line);
+      background: rgba(16, 23, 30, 0.8);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.14);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .week-three-gallery-grid img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 45px rgba(0, 0, 0, 0.2), 0 0 18px rgba(118, 174, 252, 0.18);
+    }
+
+    .journey-timeline {
+      position: relative;
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+      padding-top: 0.2rem;
+    }
+
+    .journey-timeline::before {
+      content: "";
+      position: absolute;
+      left: 38px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(127, 227, 214, 0.7), rgba(118, 174, 252, 0.1));
+    }
+
+    .journey-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 90px 48px 1fr;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.95rem 1rem 0.95rem 0.85rem;
+      border: 1px solid var(--week3-line);
+      border-radius: 1rem;
+      background: linear-gradient(135deg, rgba(24, 35, 49, 0.8), rgba(12, 18, 25, 0.72));
+    }
+
+    .journey-step-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      padding: 0.5rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(127, 227, 214, 0.26);
+      background: rgba(127, 227, 214, 0.08);
+      color: var(--week3-accent);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .journey-step-arrow {
+      color: var(--week3-accent-2);
+      font-size: 1.35rem;
+      text-align: center;
+    }
+
+    .journey-step strong {
+      color: var(--primary);
+      font-size: 1.04rem;
+      font-weight: 600;
+    }
+
+    .week-three-days {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .week-three-card {
+      position: relative;
+      padding: 1.15rem;
+      border-radius: 1.15rem;
+      border: 1px solid var(--week3-line);
+      background: linear-gradient(135deg, rgba(18, 30, 43, 0.82), rgba(9, 14, 21, 0.76));
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .week-three-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0%, rgba(127, 227, 214, 0.16), transparent 30%);
+      pointer-events: none;
+    }
+
+    .week-three-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 45px rgba(0, 0, 0, 0.18), 0 0 20px rgba(118, 174, 252, 0.12);
+    }
+
+    .week-three-card-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .week-three-card-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 0.9rem;
+      background: linear-gradient(135deg, rgba(127, 227, 214, 0.18), rgba(118, 174, 252, 0.18));
+      border: 1px solid rgba(127, 227, 214, 0.22);
+      color: var(--week3-accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .week-three-card-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.42rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--week3-line);
+      background: rgba(118, 174, 252, 0.08);
+      color: var(--week3-text);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .week-three-card h3 {
+      position: relative;
+      z-index: 1;
+      color: var(--primary);
+      font-size: 1.2rem;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .week-three-focus {
+      position: relative;
+      z-index: 1;
+      color: var(--week3-accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+
+    .week-three-card details {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 0.8rem;
+    }
+
+    .week-three-card summary {
+      list-style: none;
+      cursor: pointer;
+      color: var(--week3-text);
+      font-weight: 600;
+      padding-bottom: 0.25rem;
+    }
+
+    .week-three-card summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .week-three-card ul {
+      list-style: none;
+      padding-top: 0.35rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .week-three-card li {
+      position: relative;
+      padding-left: 0.95rem;
+      color: var(--week3-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .week-three-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--week3-accent);
+    }
+
+    .mini-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+    }
+
+    .mini-gallery img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .workflow-box {
+      margin-top: 1rem;
+      padding: 1.2rem;
+      border-radius: 1.2rem;
+      border: 1px solid var(--week3-line);
+      background: linear-gradient(135deg, rgba(17, 32, 45, 0.82), rgba(8, 15, 21, 0.7));
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.4rem;
+      color: var(--primary);
+      font-size: 0.8rem;
+    }
+
+    .flow-step .bubble {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      min-height: 72px;
+      padding: 0.6rem;
+      border-radius: 0.9rem;
+      background: rgba(118, 174, 252, 0.08);
+      border: 1px solid rgba(118, 174, 252, 0.18);
+      color: var(--week3-text);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .flow-step .arrow {
+      color: var(--week3-accent);
+      font-size: 1.1rem;
+      line-height: 1;
+      margin-top: -0.2rem;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .before-after figure {
+      margin: 0;
+      padding: 0.8rem;
+      border-radius: 1rem;
+      border: 1px solid var(--week3-line);
+      background: rgba(11, 19, 27, 0.7);
+    }
+
+    .before-after img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .before-after figcaption {
+      margin-top: 0.7rem;
+      color: var(--week3-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .glass-card {
+      border: 1px solid var(--week3-line);
+      background: linear-gradient(135deg, rgba(17, 28, 40, 0.82), rgba(10, 16, 21, 0.72));
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12);
+    }
+
+    .takeaways-list,
+    .skills-list {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      margin-top: 0.8rem;
+    }
+
+    .takeaways-list li,
+    .skills-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      color: var(--week3-muted);
+      line-height: 1.6;
+    }
+
+    .takeaways-list li::before,
+    .skills-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--week3-accent);
+    }
+
+    .week-three-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.9rem;
+    }
+
+    .week-three-tags span {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.58rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(118, 174, 252, 0.18);
+      background: rgba(118, 174, 252, 0.07);
+      color: var(--secondary);
+      font-size: 0.82rem;
+    }
+
+    .week-three-tools {
+      padding-top: 0.5rem;
+    }
+
+    .week-three-reflection {
+      margin-top: 1rem;
+      background: linear-gradient(135deg, rgba(15, 24, 31, 0.82), rgba(9, 17, 24, 0.78));
+      border: 1px solid var(--week3-line);
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+    }
+
+    .week-three-reflection p {
+      color: var(--week3-muted);
+      line-height: 1.9;
+      margin-top: 0.75rem;
+    }
+
+    .inline-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      color: var(--primary);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 820px) {
+      .week-three-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .week-three-days,
+      .summary-grid,
+      .before-after {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .week-three-gallery-grid,
+      .flow-steps,
+      .mini-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-step {
+        grid-template-columns: 72px 1fr;
+      }
+
+      .journey-step-arrow {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-screen"><div class="loading-shell"><div class="loading-bar"></div></div></div>
+  <div class="cursor-glow"></div>
+  <div class="cursor-follower"></div>
+  <div class="progress-bar"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark"></span>Abikrishnan P.</a>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a class="active" href="protosem.html">ProtoSem</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="week-three-page">
+    <section class="week-three-hero reveal">
+      <p class="eyebrow">ProtoSem · Week 3</p>
+      <h1>Week 3 <span>Computational Hardware &amp; 3D Product Design</span></h1>
+      <p class="week-three-subtitle">From Hardware Fundamentals to Physical Prototyping and 3D CAD Design</p>
+      <p class="week-three-description">Week 3 combined two important areas of engineering learning: understanding computational hardware, electrical and electronics fundamentals, and developing practical 3D design and prototyping skills. The first two days focused on computational hardware, electrical systems, electronic components, power distribution, and motors. The remaining three days focused on design fundamentals, Autodesk Fusion 360, 3D modelling, physical prototyping, and transforming real-world concepts into digital CAD models.</p>
+    </section>
+
+    <section class="week-three-gallery reveal" aria-label="Week 3 learning overview">
+      <div class="section-header">
+        <p class="eyebrow">Overview</p>
+        <h2>Computational Hardware → Electrical &amp; Electronics → Design Fundamentals → Physical Prototyping → 3D CAD Modelling → Product Development</h2>
+      </div>
+      <div class="week-three-gallery-grid">
+        <img src="images/week%203/computationalhardware1.jpg" alt="Computational hardware fundamentals" />
+        <img src="images/week%203/computationalhardware2.jpg" alt="Power distribution and electrical systems" />
+        <img src="images/week%203/computationalhardware3.jpg" alt="Electronic systems and hardware foundation" />
+        <img src="images/week%203/designing1.jpg" alt="Fusion 360 sketching and design fundamentals" />
+        <img src="images/week%203/designing2.jpg" alt="3D modelling and design workflow" />
+      </div>
+    </section>
+
+    <section class="week-three-journey reveal">
+      <div class="section-header">
+        <p class="eyebrow">Learning journey</p>
+        <h2>Week 3 Learning Journey</h2>
+      </div>
+      <div class="journey-timeline">
+        <div class="journey-step"><span class="journey-step-label">Day 1</span><span class="journey-step-arrow">↓</span><strong>Computational Hardware Fundamentals</strong></div>
+        <div class="journey-step"><span class="journey-step-label">Day 2</span><span class="journey-step-arrow">↓</span><strong>Electrical &amp; Electronics Fundamentals</strong></div>
+        <div class="journey-step"><span class="journey-step-label">Day 3</span><span class="journey-step-arrow">↓</span><strong>Design Fundamentals &amp; 3D Modelling</strong></div>
+        <div class="journey-step"><span class="journey-step-label">Day 4</span><span class="journey-step-arrow">↓</span><strong>Physical Prototyping &amp; Camera CAD</strong></div>
+        <div class="journey-step"><span class="journey-step-label">Day 5</span><span class="journey-step-arrow">↓</span><strong>Paper Rocket &amp; 3D Product Design</strong></div>
+      </div>
+    </section>
+
+    <section class="week-three-days">
+      <article class="week-three-card reveal">
+        <div class="week-three-card-head">
+          <div class="week-three-card-index">01</div>
+          <span class="week-three-card-chip">Day 1</span>
+        </div>
+        <h3>Computational Hardware Fundamentals</h3>
+        <div class="week-three-focus">Focus: Understanding the hardware foundation of computational and electronic systems.</div>
+        <details open>
+          <summary>View day details</summary>
+          <ul>
+            <li>Explored the fundamentals of computational hardware and electronic systems.</li>
+            <li>Understood how electrical energy powers computational and embedded hardware.</li>
+            <li>Learned the basic concepts of electrical power generation, transmission, and distribution.</li>
+            <li>Studied AC and DC power and their applications in electronic systems.</li>
+            <li>Understood voltage, current, resistance, and electrical power.</li>
+            <li>Learned how power sources, circuits, and loads work together in a hardware system.</li>
+            <li>Connected electrical fundamentals with real-world embedded and computational hardware.</li>
+          </ul>
+          <div class="mini-gallery">
+            <img src="images/week%203/computationalhardware1.jpg" alt="Computational hardware learning" />
+            <img src="images/week%203/computationalhardware2.jpg" alt="Electrical power distribution" />
+          </div>
+        </details>
+      </article>
+
+      <article class="week-three-card reveal">
+        <div class="week-three-card-head">
+          <div class="week-three-card-index">02</div>
+          <span class="week-three-card-chip">Day 2</span>
+        </div>
+        <h3>Electrical &amp; Electronics Fundamentals</h3>
+        <div class="week-three-focus">Focus: Understanding the fundamental components and actuation systems used in electronic and electromechanical systems.</div>
+        <details open>
+          <summary>View day details</summary>
+          <ul>
+            <li>Studied fundamental electronic components and their practical applications.</li>
+            <li>Learned the functions of resistors, capacitors, and inductors.</li>
+            <li>Understood how resistors control current, capacitors store electrical energy, and inductors store energy in magnetic fields.</li>
+            <li>Explored different types of motors including DC motors, AC motors, stepper motors, and servo motors.</li>
+            <li>Understood motors as actuators used in robotics, automation, and electromechanical systems.</li>
+            <li>Connected electronic components, power systems, and motors to practical engineering applications.</li>
+            <li>Developed a stronger foundation for understanding hardware-based systems.</li>
+          </ul>
+          <div class="mini-gallery">
+            <img src="images/week%203/computationalhardware3.jpg" alt="Electronic components and circuits" />
+            <img src="images/week%203/designing1.jpg" alt="Motor and electronics learning reference" />
+          </div>
+        </details>
+      </article>
+
+      <article class="week-three-card reveal">
+        <div class="week-three-card-head">
+          <div class="week-three-card-index">03</div>
+          <span class="week-three-card-chip">Day 3</span>
+        </div>
+        <h3>Design Fundamentals &amp; Introduction to 3D Modelling</h3>
+        <div class="week-three-focus">Focus: Moving from engineering fundamentals into product design and CAD modelling.</div>
+        <details open>
+          <summary>View day details</summary>
+          <ul>
+            <li>Introduced the fundamentals of 3D product design.</li>
+            <li>Learned how physical objects can be represented digitally using CAD software.</li>
+            <li>Introduced Autodesk Fusion 360 and its basic modelling environment.</li>
+            <li>Learned the importance of sketches, dimensions, constraints, and geometric accuracy.</li>
+            <li>Created basic 2D sketches before converting them into 3D models.</li>
+            <li>Explored basic 3D modelling operations such as extrude, revolve, fillet, and other fundamental features.</li>
+            <li>Understood the design workflow: Concept → Sketch → Dimensions &amp; Constraints → 3D Features → Final Model.</li>
+          </ul>
+          <div class="mini-gallery">
+            <img src="images/week%203/designing1.jpg" alt="Fusion 360 design fundamentals" />
+            <img src="images/week%203/designing2.jpg" alt="Dimensioned 3D design sketching" />
+          </div>
+        </details>
+      </article>
+
+      <article class="week-three-card reveal">
+        <div class="week-three-card-head">
+          <div class="week-three-card-index">04</div>
+          <span class="week-three-card-chip">Day 4</span>
+        </div>
+        <h3>Physical Prototyping &amp; Camera Design</h3>
+        <div class="week-three-focus">Focus: Transforming a physical clay prototype into a digital 3D CAD model.</div>
+        <details open>
+          <summary>View day details</summary>
+          <ul>
+            <li>Created a physical clay model of a camera as an initial product concept.</li>
+            <li>Used clay to explore the camera's shape, proportions, form, and overall physical appearance.</li>
+            <li>Captured an image of the physical clay camera model.</li>
+            <li>Imported the clay model image into Autodesk Fusion 360 as a reference.</li>
+            <li>Used the imported image to guide the dimensions, proportions, and shape of the digital model.</li>
+            <li>Developed the camera geometry in Fusion 360 based on the physical clay prototype.</li>
+            <li>Added product features and structural details to create the final 3D camera model.</li>
+          </ul>
+          <div class="mini-gallery">
+            <img src="images/week%203/camera_clay_model.png" alt="Clay camera prototype" />
+            <img src="images/week%203/3dmodel.png" alt="Final camera CAD model" />
+          </div>
+        </details>
+      </article>
+
+      <article class="week-three-card reveal">
+        <div class="week-three-card-head">
+          <div class="week-three-card-index">05</div>
+          <span class="week-three-card-chip">Day 5</span>
+        </div>
+        <h3>Paper Rocket &amp; 3D Product Modelling</h3>
+        <div class="week-three-focus">Focus: Turning physical ideas and real-world objects into digital 3D models.</div>
+        <details open>
+          <summary>View day details</summary>
+          <ul>
+            <li>Participated in a hands-on paper rocket activity where we designed and tested a paper rocket to make it fly.</li>
+            <li>Explored how shape, structure, balance, and aerodynamics influence the flight of a simple paper rocket.</li>
+            <li>Used the physical paper rocket activity as inspiration for digital 3D modelling.</li>
+            <li>Created a 3D model of the paper rocket using Autodesk Fusion 360.</li>
+            <li>Converted the physical concept into a digital representation.</li>
+            <li>Also developed other basic 3D structures and product models such as a water bottle and mechanical components.</li>
+          </ul>
+          <div class="mini-gallery">
+            <img src="images/week%203/papertocket.png" alt="Paper rocket activity" />
+            <img src="images/week%203/3dmodel.png" alt="Paper rocket and product design model" />
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <section class="week-three-workflow reveal">
+      <div class="section-header">
+        <p class="eyebrow">Prototype workflow</p>
+        <h2>From clay prototype to digital product</h2>
+      </div>
+      <div class="workflow-box">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="bubble">Physical Clay Prototype</div>
+          </div>
+          <div class="flow-step">
+            <div class="arrow">↓</div>
+            <div class="bubble">Reference Image</div>
+          </div>
+          <div class="flow-step">
+            <div class="arrow">↓</div>
+            <div class="bubble">Image Imported into Fusion 360</div>
+          </div>
+          <div class="flow-step">
+            <div class="arrow">↓</div>
+            <div class="bubble">3D CAD Development</div>
+          </div>
+          <div class="flow-step">
+            <div class="arrow">↓</div>
+            <div class="bubble">Final Camera Model</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="before-after">
+        <figure>
+          <img src="images/week%203/camera_clay_model.png" alt="Clay camera prototype before redesign" />
+          <figcaption>Before: Physical clay camera prototype</figcaption>
+        </figure>
+        <figure>
+          <img src="images/week%203/3dmodel.png" alt="Final camera product model in Fusion 360" />
+          <figcaption>After: Final Fusion 360 camera model</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="week-three-paper reveal">
+      <div class="section-header">
+        <p class="eyebrow">Paper rocket process</p>
+        <h2>Physical experiment → design observation → digital product</h2>
+      </div>
+      <div class="workflow-box">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="bubble">Physical Paper Rocket</div>
+          </div>
+          <div class="flow-step">
+            <div class="arrow">↓</div>
+            <div class="bubble">Flight Experiment</div>
+          </div>
+          <div class="flow-step">
+            <div class="arrow">↓</div>
+            <div class="bubble">Design Observation</div>
+          </div>
+          <div class="flow-step">
+            <div class="arrow">↓</div>
+            <div class="bubble">3D CAD Model</div>
+          </div>
+          <div class="flow-step">
+            <div class="arrow">↓</div>
+            <div class="bubble">Final Digital Product</div>
+          </div>
+        </div>
+      </div>
+      <div class="before-after">
+        <figure>
+          <img src="images/week%203/papertocket.png" alt="Paper rocket physical model" />
+          <figcaption>Paper rocket activity and testing</figcaption>
+        </figure>
+        <figure>
+          <img src="images/week%203/3dmodel.png" alt="Digital product model inspired by the paper rocket concept" />
+          <figcaption>3D digital product development</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="week-three-summary reveal">
+      <div class="section-header">
+        <p class="eyebrow">Summary</p>
+        <h2>Week 3 in context</h2>
+      </div>
+      <div class="summary-grid">
+        <div class="glass-card">
+          <p class="eyebrow">Key takeaways</p>
+          <ul class="takeaways-list">
+            <li>Understood the hardware foundations of computational systems.</li>
+            <li>Learned AC/DC power and basic electrical power distribution.</li>
+            <li>Studied fundamental electronic components.</li>
+            <li>Explored different types of motors and their applications.</li>
+            <li>Developed a foundation in electrical and electronics engineering.</li>
+            <li>Learned the basics of 3D CAD and product design.</li>
+            <li>Understood the importance of accurate sketches, dimensions, and constraints.</li>
+            <li>Experienced physical prototyping using clay.</li>
+            <li>Converted a physical clay camera concept into a digital 3D CAD model.</li>
+            <li>Explored how physical prototypes can guide digital product development.</li>
+            <li>Participated in a paper rocket design and flight activity.</li>
+            <li>Converted the paper rocket concept into a 3D CAD model.</li>
+            <li>Developed basic mechanical structures and product models.</li>
+            <li>Connected engineering theory, physical experimentation, and digital design.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card">
+          <p class="eyebrow">Skills developed</p>
+          <div class="week-three-tags">
+            <span>Computational Hardware</span>
+            <span>Electrical Fundamentals</span>
+            <span>Electronics</span>
+            <span>AC/DC Systems</span>
+            <span>Power Distribution</span>
+            <span>Electronic Components</span>
+            <span>Motors</span>
+            <span>Actuation Systems</span>
+            <span>Circuit Simulation</span>
+            <span>CAD Modelling</span>
+            <span>Fusion 360</span>
+            <span>3D Design</span>
+            <span>Sketching</span>
+            <span>Geometric Constraints</span>
+            <span>Parametric Modelling</span>
+            <span>Physical Prototyping</span>
+            <span>Product Design</span>
+            <span>Mechanical Design</span>
+            <span>3D Visualization</span>
+            <span>Problem Solving</span>
+            <span>Engineering Design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="week-three-tools reveal">
+      <div class="glass-card">
+        <p class="eyebrow">Tools &amp; technologies</p>
+        <div class="week-three-tags">
+          <span>Tinkercad Circuits</span>
+          <span>Autodesk Fusion 360</span>
+          <span>CAD Modelling</span>
+          <span>3D Product Design</span>
+          <span>Physical Prototyping</span>
+          <span>Circuit Simulation</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="week-three-reflection reveal">
+      <p class="eyebrow">Reflection</p>
+      <p>Week 3 was an important part of my ProtoSem journey because it connected computational hardware and electronics fundamentals with practical engineering design. I learned how electrical systems, electronic components, and motors form the foundation of hardware-based systems.</p>
+      <p>The second half of the week allowed me to move from theory into practical design. I learned the fundamentals of CAD modelling, created physical prototypes, and explored how real-world objects can be transformed into digital 3D models. The camera activity was particularly valuable because I created a clay prototype first and then used its image as a reference inside Fusion 360 to develop the final 3D camera model.</p>
+      <p>The paper rocket activity also added a fun hands-on engineering element, where we designed and tested a physical rocket before exploring its 3D digital representation. Overall, Week 3 helped me understand the complete engineering process from fundamentals and experimentation to physical prototyping and digital product development.</p>
+    </section>
+
+    <a class="inline-link" href="protosem.html">← Back to ProtoSem</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Abikrishnan P.</span>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/cursor.js"></script>
+</body>
+</html>
