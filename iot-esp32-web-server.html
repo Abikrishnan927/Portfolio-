@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESP32 Embedded HTTP Web Server | Abikrishnan P.</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="loading-screen"><div class="loading-shell"><div class="loading-bar"></div></div></div>
+  <div class="cursor-glow"></div>
+  <div class="cursor-follower"></div>
+  <div class="progress-bar"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark"></span>Abikrishnan P.</a>
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a class="active" href="projects.html">Projects</a>
+      <a href="protosem.html">ProtoSem</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="project-detail-page">
+    <nav class="project-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span> / </span>
+      <a href="projects.html">Projects</a>
+      <span> / </span>
+      <span>ESP32 Embedded HTTP Web Server</span>
+    </nav>
+
+    <section class="project-detail-hero reveal">
+      <p class="eyebrow">TASK 01 / EMBEDDED IoT WEB SERVER</p>
+      <h1>ESP32 Embedded HTTP Web Server</h1>
+      <h2>On/Off Inbuilt LED Control</h2>
+      <p class="project-detail-summary">Demonstrating wireless microcontroller actuation by creating a local HTTP web server on ESP32 to control the onboard built-in LED (GPIO 2) from a web browser interface in real time.</p>
+
+      <div class="detail-info-grid">
+        <article class="detail-card">
+          <p class="detail-label">Hardware Board</p>
+          <h3>NodeMCU ESP-WROOM-32</h3>
+          <p>Dual-Core Xtensa LX6 MCU</p>
+        </article>
+        <article class="detail-card">
+          <p class="detail-label">Actuator / Pin</p>
+          <h3>Inbuilt SMD LED (GPIO 2)</h3>
+          <p>Onboard active-HIGH LED</p>
+        </article>
+        <article class="detail-card">
+          <p class="detail-label">Network &amp; Server</p>
+          <h3>HTTP Web Server</h3>
+          <p>Port 80 · Local Wi-Fi Network</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Hands-on Work</p>
+        <h2>Hands-on Implementation Photos</h2>
+      </div>
+      <p class="project-detail-summary" style="margin-top: -.4rem;">Photographic proof of the hands-on engineering lab session: programming the ESP32 in Arduino IDE and testing the live web-controlled LED actuation.</p>
+      <div class="project-gallery-grid">
+        <figure class="photo-card">
+          <img src="images/IOT_Project_1/arudino_ide.png" alt="ESP32 programming in Arduino IDE" loading="lazy" />
+          <figcaption>Lab workstation – ESP32 programming and testing in Arduino IDE</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="images/IOT_Project_1/dashboard.png" alt="ESP32 dashboard and LED control interface" loading="lazy" />
+          <figcaption>ESP32 onboard LED responding to the web control interface</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="images/IOT_Project_1/project%20structure_ai_image.png" alt="ESP32 control flow architecture" loading="lazy" />
+          <figcaption>Browser-based LED ON/OFF control over local Wi-Fi</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Live Demonstration</p>
+        <h2>Task 1 Video Demonstration</h2>
+      </div>
+      <p class="project-detail-summary" style="margin-top: -.4rem;">Live demonstration showing the browser-based control interface sending commands to the ESP32 over Wi-Fi and controlling the onboard LED.</p>
+      <div class="project-video-box">
+        <video controls preload="metadata" playsinline muted poster="images/IOT_Project_1/dashboard.png">
+          <source src="images/IOT_Project_1/project-proof-video-browser-safe.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="two-column-layout">
+        <div class="detail-panel">
+          <h3>Key Technical Points</h3>
+          <ul class="detail-technical-list">
+            <li><strong>Onboard LED Pin Mapping:</strong> On the NodeMCU ESP-WROOM-32 development board used in this project, the onboard LED is connected to GPIO 2. The LED is controlled using digital GPIO output logic.</li>
+            <li><strong>Local HTTP Web Server:</strong> The ESP32 hosts a local HTTP web server using the WebServer.h library on standard TCP port 80. No external cloud server is required for the basic control interface.</li>
+            <li><strong>Wi-Fi Connectivity:</strong> The ESP32 connects to the configured Wi-Fi access point using the WiFi.h library and obtains a local IP address through DHCP.</li>
+            <li><strong>Explicit URI Routing:</strong> Separate HTTP routes are assigned for the root dashboard, LED ON, LED OFF, and BLINK operations using server.on().</li>
+            <li><strong>GPIO Actuation:</strong> HTTP requests are converted into GPIO actions using digitalWrite(), allowing browser commands to directly control the physical onboard LED.</li>
+            <li><strong>Browser-Based Interface:</strong> HTML and CSS are hosted directly from the ESP32, providing a simple responsive control interface accessible from devices connected to the same local network.</li>
+            <li><strong>Event Loop Servicing:</strong> server.handleClient() is continuously called from loop() to process incoming HTTP requests.</li>
+            <li><strong>Non-Blocking Automatic Blinking:</strong> For continuous blinking, millis() can be used instead of delay() so that the ESP32 can continue servicing web requests while controlling the LED.</li>
+          </ul>
+        </div>
+        <div class="detail-panel">
+          <h3>What I Learned &amp; Insights</h3>
+          <ul class="detail-insights-list">
+            <li><strong>Client–Server Communication:</strong> Understood how a browser acts as an HTTP client while the ESP32 operates as the local server, receiving requests and returning responses.</li>
+            <li><strong>HTTP Request Routing:</strong> Learned how URI paths such as /on and /off are mapped to specific embedded C++ handler functions.</li>
+            <li><strong>Wi-Fi Networking:</strong> Understood how the ESP32 joins a local Wi-Fi network, obtains an IP address, and becomes accessible to other devices on the same network.</li>
+            <li><strong>Embedded Web Interface:</strong> Learned how HTML and CSS can be embedded directly into ESP32 firmware to create a lightweight control dashboard.</li>
+            <li><strong>GPIO and Software Integration:</strong> Understood how a web request can travel through the networking stack and eventually trigger a physical GPIO output.</li>
+            <li><strong>Blocking vs Non-Blocking Execution:</strong> Learned why millis()-based timing is more suitable than long delay() calls when an embedded application must simultaneously handle networking and hardware control.</li>
+            <li><strong>Rapid IoT Prototyping:</strong> Learned how an ESP32's integrated Wi-Fi capability can be used to quickly prototype IoT control systems without additional communication hardware.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Firmware</p>
+        <h2>Arduino IDE Source Code</h2>
+      </div>
+      <p class="project-detail-summary" style="margin-top: -.4rem;">Complete ESP32 Arduino C++ implementation using WiFi.h and WebServer.h to host the LED control interface.</p>
+      <div class="code-block">
+        <pre>#include &lt;WiFi.h&gt;
+#include &lt;WebServer.h&gt;
+
+const char* ssid = "YOUR_WIFI_SSID";
+const char* password = "YOUR_WIFI_PASSWORD";
+
+const int LED = 2;
+
+WebServer server(80);
+
+String webpage() {
+  String page = R"rawliteral(
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;ESP32 LED Control&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f2f2f2;
+      margin-top: 60px;
+    }
+
+    h1 { color: #222; }
+    h2 { color: #555; }
+
+    button {
+      width: 200px;
+      padding: 18px;
+      margin: 10px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .on { background: #28a745; color: white; }
+    .off { background: #dc3545; color: white; }
+    .blink { background: #007bff; color: white; }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h1&gt;ESP32 Web Server&lt;/h1&gt;
+  &lt;h2&gt;LED Control&lt;/h2&gt;
+
+  &lt;a href="/on"&gt;&lt;button class="on"&gt;LED ON&lt;/button&gt;&lt;/a&gt;&lt;br&gt;
+  &lt;a href="/off"&gt;&lt;button class="off"&gt;LED OFF&lt;/button&gt;&lt;/a&gt;&lt;br&gt;
+  &lt;a href="/blink"&gt;&lt;button class="blink"&gt;BLINK&lt;/button&gt;&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+  )rawliteral";
+
+  return page;
+}
+
+void handleRoot() {
+  server.send(200, "text/html", webpage());
+}
+
+void handleOn() {
+  digitalWrite(LED, HIGH);
+  Serial.println("LED ON");
+  server.sendHeader("Location", "/");
+  server.send(303);
+}
+
+void handleOff() {
+  digitalWrite(LED, LOW);
+  Serial.println("LED OFF");
+  server.sendHeader("Location", "/");
+  server.send(303);
+}
+
+void handleBlink() {
+  Serial.println("LED BLINKING");
+
+  for (int i = 0; i &lt; 5; i++) {
+    digitalWrite(LED, HIGH);
+    delay(500);
+    digitalWrite(LED, LOW);
+    delay(500);
+  }
+
+  server.sendHeader("Location", "/");
+  server.send(303);
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(LED, OUTPUT);
+  digitalWrite(LED, LOW);
+
+  WiFi.begin(ssid, password);
+  Serial.println();
+  Serial.print("Connecting to Wi-Fi");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println();
+  Serial.println("Wi-Fi Connected!");
+  Serial.print("ESP32 IP Address: ");
+  Serial.println(WiFi.localIP());
+
+  server.on("/", handleRoot);
+  server.on("/on", handleOn);
+  server.on("/off", handleOff);
+  server.on("/blink", handleBlink);
+
+  server.begin();
+  Serial.println("HTTP Web Server Started!");
+}
+
+void loop() {
+  server.handleClient();
+}</pre>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Additional Details</p>
+        <h2>Project Overview &amp; Working Flow</h2>
+      </div>
+      <p class="project-detail-summary" style="margin-top: -.4rem;">This project was implemented as a compact ESP32-based embedded web application where the board acts as a local server and the browser becomes the control interface. The board connects to the same Wi-Fi network as the user device, exposes a simple control page, and maps each button click to a unique HTTP route. The LED is then toggled through GPIO 2, proving the interaction between embedded firmware, networking, and digital output control.</p>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Implementation</p>
+        <h2>Step-by-Step Implementation Guide</h2>
+      </div>
+      <div class="implementation-timeline">
+        <article class="implementation-step">
+          <div class="step-number">01</div>
+          <div>
+            <h3>Identify Onboard LED Pin</h3>
+            <p>The onboard LED on the selected ESP32 development board is connected to GPIO 2 and can be controlled using digital output logic.</p>
+          </div>
+        </article>
+        <article class="implementation-step">
+          <div class="step-number">02</div>
+          <div>
+            <h3>Configure ESP32 in Arduino IDE</h3>
+            <p>Select the correct ESP32 board, connect the board through USB, and upload the firmware using the Arduino IDE toolchain.</p>
+          </div>
+        </article>
+        <article class="implementation-step">
+          <div class="step-number">03</div>
+          <div>
+            <h3>Connect ESP32 to Wi-Fi</h3>
+            <p>Use WiFi.begin(), wait for WL_CONNECTED, and read the local IP from WiFi.localIP() in the Serial Monitor.</p>
+          </div>
+        </article>
+        <article class="implementation-step">
+          <div class="step-number">04</div>
+          <div>
+            <h3>Start the HTTP Server</h3>
+            <p>Create the server using WebServer server(80); and start the listener with server.begin(); to accept incoming client requests.</p>
+          </div>
+        </article>
+        <article class="implementation-step">
+          <div class="step-number">05</div>
+          <div>
+            <h3>Open the Web Interface</h3>
+            <p>Open a browser connected to the same Wi-Fi network and enter the local IP shown in the Serial Monitor to access the control dashboard.</p>
+          </div>
+        </article>
+        <article class="implementation-step">
+          <div class="step-number">06</div>
+          <div>
+            <h3>Send LED Control Requests</h3>
+            <p>Trigger the routes /on, /off, and /blink, where each request is mapped to a dedicated handler function for command processing.</p>
+          </div>
+        </article>
+        <article class="implementation-step">
+          <div class="step-number">07</div>
+          <div>
+            <h3>Physical LED Actuation</h3>
+            <p>digitalWrite() changes the GPIO 2 output state, switching the onboard LED ON or OFF and allowing direct real-time actuation.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Workflow</p>
+        <h2>Project Workflow Diagram</h2>
+      </div>
+      <div class="architectural-card detail-panel">
+        <div class="architecture-flow">
+          <span class="flow-node">Browser</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-node">HTTP GET Request</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-node">Wi-Fi Network</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-node">ESP32 Web Server</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-node">URI Routing</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-node">Handler Function</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-node">GPIO 2</span>
+          <span class="flow-arrow">↓</span>
+          <span class="flow-node">Onboard LED</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Technology Stack</p>
+        <h2>Technologies / Tools used</h2>
+      </div>
+      <div class="chip-list" style="margin-top: 0;">
+        <span class="chip">ESP32</span>
+        <span class="chip">Arduino IDE</span>
+        <span class="chip">C++</span>
+        <span class="chip">Wi-Fi</span>
+        <span class="chip">HTTP</span>
+        <span class="chip">WebServer.h</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">GPIO</span>
+        <span class="chip">Embedded Systems</span>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Outcome</p>
+        <h2>Project Outcome</h2>
+      </div>
+      <div class="project-outcome">
+        <strong>Successfully implemented</strong> a local Wi-Fi controlled ESP32 web interface capable of sending browser commands to the microcontroller and controlling its onboard LED in real time. The project provided practical experience in embedded networking, HTTP communication, GPIO control, and browser-based IoT interfaces.
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Abikrishnan P.</span>
+    <a class="linkedin-footer-link" href="https://www.linkedin.com/in/abi-krishnan-23584b328/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">
+      <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6.94 8.5A1.56 1.56 0 1 0 6.94 5.38a1.56 1.56 0 0 0 0 3.12ZM5.5 9.38h2.88V18H5.5zM10.5 9.38h2.76v1.16h.04c.38-.72 1.32-1.48 2.72-1.48 2.91 0 3.44 1.91 3.44 4.4V18h-2.88v-7.82c0-1.86-.03-4.25-2.58-4.25-2.59 0-2.98 2.02-2.98 4.11V18H10.5z"/>
+      </svg>
+      <span>Abi Krishnan</span>
+    </a>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/cursor.js"></script>
+</body>
+</html>

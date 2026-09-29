@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ESP32 smart home automation project using DHT11, LDR, relay control, Wi-Fi, and Firebase communication.">
+<title>ESP32 Smart Home Automation | Abikrishnan P.</title>
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/animations.css"><link rel="stylesheet" href="css/responsive.css">
+<style>.firmware-source .cpp-keyword{color:#c4a7ff}.firmware-source .cpp-string{color:#b7d476}.firmware-source .cpp-preprocessor{color:#79d6e8}.firmware-source .cpp-comment{color:#91a18e}.firmware-source .cpp-type{color:#80b7ff}</style>
+</head>
+<body>
+<div class="loading-screen"><div class="loading-shell"><div class="loading-bar"></div></div></div><div class="cursor-glow"></div><div class="cursor-follower"></div><div class="progress-bar"></div>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark"></span>Abikrishnan P.</a><button class="menu-toggle" aria-label="Toggle navigation">☰</button><nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="experience.html">Experience</a><a class="active" href="projects.html">Projects</a><a href="protosem.html">ProtoSem</a><a href="achievements.html">Achievements</a><a href="contact.html">Contact</a></nav></header>
+<main class="project-detail-page">
+<nav class="project-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="projects.html">Projects</a><span>/</span><span>ESP32 Smart Home Automation</span></nav>
+<section class="project-detail-hero reveal"><p class="eyebrow">PROJECT 05 / INTERNET OF THINGS</p><h1>ESP32 Smart Home Automation</h1><h2>Embedded automation for sensor-based environmental monitoring and relay-controlled appliance switching</h2><p class="project-detail-summary">This project focuses on the physical automation layer: an ESP32 reads DHT11 temperature and humidity, measures light using an LDR, responds to a push button, and controls a relay-driven bulb through firmware logic and Wi-Fi communication with Firebase.</p><div class="detail-info-grid" style="margin-top:1.2rem"><article class="detail-card"><p class="detail-label">Controller</p><h3>ESP32 WROOM-32</h3><p>Wi-Fi enabled microcontroller for embedded automation</p></article><article class="detail-card"><p class="detail-label">Sensors</p><h3>DHT11 + LDR</h3><p>Temperature, humidity, and ambient light sensing</p></article><article class="detail-card"><p class="detail-label">Actuation</p><h3>Relay + Bulb</h3><p>Physical appliance control using GPIO and firmware logic</p></article></div></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">01 / Overview</p><h2>Project Overview</h2></div><p class="project-detail-summary">The ESP32-based smart home system combines environmental sensing, local control logic, and cloud synchronization to automate a home appliance. The hardware reads sensor values, evaluates operating conditions, and toggles a relay to control a bulb or appliance. The same project also exchanges status and command data with Firebase for web-based visibility and control.</p></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">02 / Objective</p><h2>Project Objective</h2></div><p class="project-outcome"><strong>Developing an ESP32-based smart home automation system that monitors environmental conditions and controls a light/appliance using sensors, a physical button, relay control, Wi-Fi, and Firebase communication.</strong></p><p class="project-detail-summary" style="margin-top:1rem">The embedded system reads data from the DHT11 and LDR, interprets local conditions, and decides whether to switch the relay. A physical push button allows manual override, while Firebase acts as the cloud bridge for remote state and dashboard synchronization.</p></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">03 / Problem Statement</p><h2>Problem Statement</h2></div><p class="project-detail-summary">A common smart-home problem is the need to automate lighting based on real conditions while supporting both convenience and manual control. This project addresses that by using sensor-driven automation, local override logic, and cloud connectivity in one embedded system. The result is a simple but effective home automation setup that reacts to changes in temperature, humidity, and ambient light.</p></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">04 / Hardware Components</p><h2>Hardware Components</h2></div><div class="two-column-layout"><div class="detail-panel"><h3>Core system parts</h3><ol><li>ESP32 NodeMCU development board</li><li>DHT11 temperature and humidity sensor</li><li>LDR light-dependent resistor for ambient brightness sensing</li><li>Push button for local manual override</li><li>5V relay module for switching an AC bulb or appliance</li><li>Status LED for visual feedback</li><li>Breadboard, jumper wires, and a powered AC bulb setup</li></ol></div><div class="detail-panel"><h3>Physical wiring summary</h3><div class="table-scroll"><table><thead><tr><th>Component</th><th>ESP32 pin</th></tr></thead><tbody><tr><td>DHT11 data</td><td>GPIO 4</td></tr><tr><td>LDR / ADC</td><td>GPIO 34</td></tr><tr><td>Push button</td><td>GPIO 14</td></tr><tr><td>Relay control</td><td>GPIO 26</td></tr><tr><td>Status LED</td><td>GPIO 2</td></tr></tbody></table></div></div></div><p class="project-detail-summary" style="margin-top:1rem">The supplied Project 4 assets include dashboard and flow-related images, but no dedicated hardware board photographs were provided. The implementation details above are therefore based on the project’s documented pin mapping and firmware logic rather than invented hardware imagery.</p></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">05 / Circuit</p><h2>Circuit / Wiring</h2></div><div class="detail-panel"><p class="project-detail-summary">The ESP32 acts as the central embedded controller. The DHT11 and LDR feed environmental values into GPIO and ADC pins, while the relay output drives the light or appliance circuit. The push button provides an immediate local override, and the status LED indicates the current output state. Together, the wiring creates a compact smart-home controller that can run autonomously or synchronize with a cloud dashboard.</p></div><figure class="photo-card" style="margin-top:1rem"><img class="lightbox-trigger" src="images/IOT_Project_4/flowchart.png" alt="ESP32 smart home flowchart and control path" loading="lazy"><figcaption>System flowchart showing sensor input, ESP32 processing, relay control, and cloud communication.</figcaption></figure></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">06 / Firmware</p><h2>ESP32 Firmware</h2></div><div class="detail-panel"><p class="project-detail-summary">The firmware is implemented in Arduino/C++ on the ESP32. It initializes Wi-Fi, configures GPIO, reads the DHT11 sensor, samples the LDR value, debounces the button, and updates the relay state. It also publishes telemetry to Firebase and listens for cloud commands that update the device state.</p></div><details class="detail-panel firmware-source"><summary>Show ESP32 firmware logic</summary><div class="code-toolbar"><span class="source-file-label">esp32_firebase_smart_home.ino</span><button class="button secondary copy-code" type="button">Copy Code</button><span class="copy-status" aria-live="polite"></span></div><div class="code-block"><pre id="esp32-source-code">#include &lt;WiFi.h&gt;
+#include &lt;Firebase_ESP_Client.h&gt;
+#include &lt;DHT.h&gt;
+
+#define DHT_PIN      4
+#define DHT_TYPE     DHT11
+#define LDR_PIN      34
+#define BUTTON_PIN   14
+#define RELAY_PIN    26
+#define STATUS_LED   2
+
+DHT dht(DHT_PIN, DHT_TYPE);
+
+void setup() {
+  Serial.begin(115200);
+  dht.begin();
+  pinMode(RELAY_PIN, OUTPUT);
+  pinMode(STATUS_LED, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  digitalWrite(RELAY_PIN, LOW);
+
+  WiFi.begin("YOUR_WIFI_SSID", "YOUR_WIFI_PASSWORD");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(400);
+    Serial.print(".");
+  }
+}
+
+void loop() {
+  float temp = dht.readTemperature();
+  float hum = dht.readHumidity();
+  int ldrRaw = analogRead(LDR_PIN);
+  int reading = digitalRead(BUTTON_PIN);
+
+  if (reading == LOW) {
+    digitalWrite(RELAY_PIN, HIGH);
+    digitalWrite(STATUS_LED, HIGH);
+  } else {
+    digitalWrite(RELAY_PIN, LOW);
+    digitalWrite(STATUS_LED, LOW);
+  }
+
+  Serial.printf("Temp: %.1f C | Hum: %.1f %% | LDR: %d\n", temp, hum, ldrRaw);
+  delay(2000);
+}</pre></div></details></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">07 / DHT11 Monitoring</p><h2>DHT11 Temperature &amp; Humidity Monitoring</h2></div><p class="project-detail-summary">The DHT11 sensor measures indoor temperature and relative humidity. These values are read by the ESP32 at regular intervals and published to Firebase for dashboard monitoring. This makes it possible to observe environmental conditions in real time from the web interface while the physical hardware remains responsible for local decision-making.</p></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">08 / LDR Detection</p><h2>LDR Light Detection</h2></div><p class="project-detail-summary">The LDR changes resistance with ambient light intensity. The ESP32 reads the analog voltage via ADC, converts it to a light-level estimate, and uses it as part of the automatic decision logic for deciding when the bulb should be switched on or off. This supports daylight-aware lighting behavior without needing direct manual toggling all the time.</p></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">09 / Local Button</p><h2>Physical Push Button Control</h2></div><div class="detail-panel"><ol><li>The push button acts as a local override to the automation logic.</li><li>Pressing the button toggles the relay-controlled bulb state.</li><li>The firmware updates the current state so the system remains synchronized with Firebase and the dashboard.</li><li>Manual control and automatic logic can coexist with a single embedded control path.</li></ol></div></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">10 / Relay</p><h2>Relay Control</h2></div><p class="project-detail-summary">The relay module is the hardware bridge between the ESP32 logic and the AC bulb or appliance. By switching the relay output on and off, the firmware can safely control a connected load based on button input, sensor thresholds, or Firebase-driven commands. This is the key actuation layer of the smart-home system.</p></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">11 / Automatic Control</p><h2>Automatic Light Control</h2></div><div class="detail-panel"><ol><li>ESP32 reads the LDR value and compares it to the configured threshold.</li><li>If ambient light falls below the threshold, the relay can turn the bulb on.</li><li>If the environment is bright enough or the system is in manual override, the bulb can remain off.</li><li>Firebase can also provide control commands that override or synchronize the current mode.</li></ol><p class="project-overview">The available project assets do not include a precise threshold value screenshot, so the behavior is described by the documented logic rather than an asserted numeric value.</p></div></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">12 / Wi-Fi</p><h2>Wi-Fi Communication</h2></div><p class="project-detail-summary">The ESP32 connects to a local Wi-Fi network through its wireless interface. This allows it to publish telemetry to Firebase and receive cloud-driven commands from the web dashboard. Wi-Fi connectivity provides the bridge between the embedded system and the higher-level IoT application.</p></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">13 / Firebase</p><h2>Firebase Communication</h2></div><div class="two-column-layout"><div class="detail-panel"><h3>Cloud synchronization</h3><ol><li>ESP32 connects to Firebase using the configured API and database URL.</li><li>It writes telemetry for temperature, humidity, and light data.</li><li>It listens for control updates such as mode and bulb state.</li><li>It reflects state changes to the dashboard through shared Firebase paths.</li></ol></div><div class="detail-panel"><h3>Example database structure</h3><div class="code-block"><pre>controls
+├── bulbState
+├── mode
+└── threshold
+
+telemetry
+└── live
+    ├── temperature
+    ├── humidity
+    ├── lux
+    ├── bulbState
+    └── timestamp</pre></div></div></div></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">14 / Demonstration</p><h2>Hardware Demonstration</h2></div><p class="project-detail-summary">The supplied Project 4 folder includes a video demonstration that documents the complete system behavior. It is referenced here as the project demonstration asset for the smart-home hardware and cloud-driven control flow.</p><div class="project-video-box"><video controls preload="metadata" playsinline poster="images/IOT_Project_4/home_page.png"><source src="images/IOT_Project_4/video%20demonstration.mp4" type="video/mp4">Your browser does not support embedded video. <a href="images/IOT_Project_4/video%20demonstration.mp4">Watch Demonstration</a></video></div></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">15 / Gallery</p><h2>Gallery</h2></div><div class="project-gallery-grid">
+<figure class="photo-card"><img class="lightbox-trigger" src="images/IOT_Project_4/flowchart.png" alt="ESP32 smart home system flowchart" loading="lazy"><figcaption>Project flowchart showing data paths and device logic.</figcaption></figure>
+<figure class="photo-card"><img class="lightbox-trigger" src="images/IOT_Project_4/home_page.png" alt="Dashboard overview for smart home control" loading="lazy"><figcaption>Live dashboard view connected to the ESP32 smart-home automation system.</figcaption></figure>
+<figure class="photo-card"><img class="lightbox-trigger" src="images/IOT_Project_4/home_page_mannual_control.png" alt="Manual light control interface" loading="lazy"><figcaption>Manual control interface reflecting state changes from the relay-driven bulb system.</figcaption></figure>
+<figure class="photo-card"><img class="lightbox-trigger" src="images/IOT_Project_4/graph.png" alt="Smart home sensor graph" loading="lazy"><figcaption>Measured sensor values visualized over time for the home automation project.</figcaption></figure>
+</div></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">16 / Technologies Used</p><h2>Technologies Used</h2></div><div class="chip-list"><span class="chip">ESP32</span><span class="chip">Arduino/C++</span><span class="chip">DHT11</span><span class="chip">LDR</span><span class="chip">Relay Module</span><span class="chip">Push Button</span><span class="chip">GPIO</span><span class="chip">ADC</span><span class="chip">Wi-Fi</span><span class="chip">Firebase</span><span class="chip">Embedded Systems</span><span class="chip">IoT</span></div></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">17 / Results</p><h2>Final Result</h2></div><div class="project-outcome">Successfully built an ESP32-based smart home automation system for environmental sensing, physical button control, relay-driven appliance switching, automatic light logic, and Firebase-based data communication.</div></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">18 / Learning</p><h2>Learning Outcomes</h2></div><div class="detail-panel"><ul class="detail-insights-list"><li>Interfacing the ESP32 with DHT11 and LDR sensors.</li><li>Implementing relay-based switching for AC loads and appliances.</li><li>Designing firmware logic for sensor-based automation and button override.</li><li>Connecting embedded hardware to Wi-Fi and Firebase.</li><li>Understanding cloud-to-device synchronization in IoT systems.</li><li>Combining hardware automation with dashboard-based monitoring and control.</li></ul></div></section>
+
+<section class="project-detail-section reveal"><div class="section-heading"><p class="eyebrow">19 / Connection</p><h2>How Project 4 and Project 5 Connect</h2></div><p class="project-detail-summary">Project 4 is the web dashboard and Firebase cloud layer, while Project 5 is the ESP32 sensor and control layer. Firebase acts as the communication bridge between them, allowing the embedded system to publish data and receive control commands while the web system monitors and interacts with the same environment.</p><div class="detail-panel" style="margin-top:1rem"><h3>Architecture</h3><div class="architecture-flow"><span class="flow-node">Project 4</span><span class="flow-arrow">↓</span><span class="flow-node">Firebase IoT Web Dashboard</span><span class="flow-arrow">↕</span><span class="flow-node">Firebase</span><span class="flow-arrow">↕</span><span class="flow-node">Project 5</span><span class="flow-arrow">↓</span><span class="flow-node">ESP32 Smart Home Automation</span></div><p class="project-overview" style="margin-top:1rem">These are separate portfolio projects, but together they form the complete IoT system: the hardware senses and acts, while the dashboard monitors and controls the system through Firebase.</p></div></section>
+</main>
+<div class="image-lightbox" aria-hidden="true"><button class="lightbox-close" type="button" aria-label="Close image viewer">&times;</button><img src="images/IOT_Project_4/home_page.png" alt=""></div>
+<footer class="site-footer"><span>&copy; 2026 Abikrishnan P.</span><a class="linkedin-footer-link" href="https://www.linkedin.com/in/abi-krishnan-23584b328/" target="_blank" rel="noopener noreferrer"><span>Abi Krishnan</span></a></footer>
+<script>
+document.querySelectorAll('.firmware-source pre').forEach((pre) => {
+  const escapeHtml = (value) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const source = pre.textContent;
+  const pattern = /(\/\/[^\n]*|"(?:\\.|[^"\\])*"|#include\s+&lt;[^\n]+|\b(?:void|bool|int|float|long|unsigned|const|if|while|return|true|false|HIGH|LOW|OUTPUT|INPUT_PULLUP|NULL)\b|\b(?:DHT|FirebaseData|FirebaseAuth|FirebaseConfig|FirebaseJson|WiFi|Serial)\b)/g;
+  pre.innerHTML = escapeHtml(source).replace(pattern, (token) => {
+    const type = token.startsWith('//') ? 'comment' : token.startsWith('"') ? 'string' : token.startsWith('#') ? 'preprocessor' : /^(DHT|Firebase|WiFi|Serial)/.test(token) ? 'type' : 'keyword';
+    return '<span class="cpp-' + type + '">' + token + '</span>';
+  });
+});
+</script>
+<script src="js/script.js"></script><script src="js/animations.js"></script><script src="js/cursor.js"></script>
+</body></html>

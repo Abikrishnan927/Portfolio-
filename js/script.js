@@ -94,4 +94,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.requestAnimationFrame(step);
   });
+
+  const lightbox = document.querySelector('.image-lightbox');
+  const lightboxImage = lightbox ? lightbox.querySelector('img') : null;
+  const closeLightbox = () => {
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  };
+  document.querySelectorAll('.lightbox-trigger').forEach((image) => {
+    image.addEventListener('click', () => {
+      if (!lightbox || !lightboxImage) return;
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    });
+  });
+  if (lightbox) {
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox || event.target.classList.contains('lightbox-close')) closeLightbox();
+    });
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeLightbox();
+  });
+
+  document.querySelectorAll('.copy-code').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const code = button.closest('details')?.querySelector('pre')?.textContent || '';
+      const status = button.parentElement.querySelector('.copy-status');
+      try {
+        await navigator.clipboard.writeText(code);
+        if (status) status.textContent = 'Copied';
+      } catch {
+        if (status) status.textContent = 'Copy unavailable';
+      }
+    });
+  });
 });

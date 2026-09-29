@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adafruit IO Cloud MQTT &amp; Relay-Controlled 230V Bulb | Abikrishnan P.</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="loading-screen"><div class="loading-shell"><div class="loading-bar"></div></div></div>
+  <div class="cursor-glow"></div>
+  <div class="cursor-follower"></div>
+  <div class="progress-bar"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark"></span>Abikrishnan P.</a>
+    <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a class="active" href="projects.html">Projects</a>
+      <a href="protosem.html">ProtoSem</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="project-detail-page">
+    <nav class="project-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span> / </span><a href="projects.html">Projects</a><span> / </span><span>IoT Project 2</span>
+    </nav>
+
+    <section class="project-detail-hero reveal">
+      <p class="eyebrow">TASK 02 / CLOUD IoT CONTROL</p>
+      <h1>Adafruit IO Cloud MQTT &amp; Relay-Controlled 230V Bulb</h1>
+      <h2>From local ESP32 control to remote cloud actuation</h2>
+      <p class="project-detail-summary">This project extends Project 1's local ESP32 web server into a cloud-connected IoT system. An Adafruit IO dashboard publishes ON/OFF commands through MQTT, the ESP32 receives them over Wi-Fi, and GPIO 26 drives a relay that switches a 230V AC bulb.</p>
+
+      <div class="detail-info-grid">
+        <article class="detail-card"><p class="detail-label">Learning Progression</p><h3>IoT Project 02</h3><p>Cloud communication after local HTTP control</p></article>
+        <article class="detail-card"><p class="detail-label">Cloud Platform</p><h3>Adafruit IO + MQTT</h3><p>Dashboard and feed named on</p></article>
+        <article class="detail-card"><p class="detail-label">Actuator</p><h3>Relay on GPIO 26</h3><p>Switching interface for the external bulb</p></article>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Objective</p><h2>Objective</h2></div>
+      <p class="project-detail-summary">Extend the local ESP32 control system into a cloud-based IoT application using Adafruit IO and MQTT. The system allows a user to control a physical 230V bulb remotely through an Adafruit IO dashboard while keeping all credentials private.</p>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Evidence</p><h2>Cloud Dashboard and Build Evidence</h2></div>
+      <p class="project-detail-summary">These are the available Project 2 assets from the portfolio workspace: the Adafruit IO dashboard, feed configuration, ON/OFF states, and the documented system flow.</p>
+      <div class="project-gallery-grid">
+        <figure class="photo-card"><img src="images/IOT_Project_2/adafruit%20io%20dashboard.png" alt="Adafruit IO Smart dashboard with Bulb control" loading="lazy" /><figcaption>Adafruit IO Smart dashboard with the Bulb ON/OFF control.</figcaption></figure>
+        <figure class="photo-card"><img src="images/IOT_Project_2/block%20configuration%20in%20ada%20fruit%20.png" alt="Adafruit IO block configuration" loading="lazy" /><figcaption>Dashboard block configuration connected to the control feed.</figcaption></figure>
+        <figure class="photo-card"><img src="images/IOT_Project_2/task2_dashboard_on.png" alt="Adafruit IO dashboard showing bulb ON" loading="lazy" /><figcaption>ON state: the dashboard sends the value on.</figcaption></figure>
+        <figure class="photo-card"><img src="images/IOT_Project_2/task2_dashboard_off.png" alt="Adafruit IO dashboard showing bulb OFF" loading="lazy" /><figcaption>OFF state: the dashboard sends the value off.</figcaption></figure>
+        <figure class="photo-card"><img src="images/IOT_Project_2/project%20flowchart.png" alt="Cloud MQTT relay project flowchart" loading="lazy" /><figcaption>Project flow from the cloud dashboard to the relay-controlled bulb.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Live Demonstration</p><h2>Task 2 Video Demonstration</h2></div>
+      <p class="project-detail-summary">The provided demonstration clip records the cloud-controlled bulb workflow. The source file is kept local in the Project 2 asset folder.</p>
+      <div class="project-video-box">
+        <video controls preload="metadata" playsinline muted poster="images/IOT_Project_2/adafruit%20io%20dashboard.png">
+          <source src="images/IOT_Project_2/video-demonstration-browser-safe.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="two-column-layout">
+        <div class="detail-panel">
+          <h3>Technologies Used</h3>
+          <div class="chip-list">
+            <span class="chip">ESP32</span><span class="chip">Arduino IDE</span><span class="chip">Adafruit IO</span><span class="chip">MQTT</span><span class="chip">Wi-Fi</span><span class="chip">Relay</span><span class="chip">IoT</span><span class="chip">Embedded Systems</span>
+          </div>
+        </div>
+        <div class="detail-panel">
+          <h3>Project Overview</h3>
+          <p class="project-overview">The ESP32 connects to Wi-Fi and authenticates with Adafruit IO. The Smart dashboard contains a Bulb toggle that writes on or off to the on feed. MQTT delivers that value to the ESP32, where the callback interprets the command and changes GPIO 26. The relay then switches the external bulb.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Cloud Configuration</p><h2>Adafruit IO Account and Feed</h2></div>
+      <div class="two-column-layout">
+        <div class="detail-panel"><h3>Account and Feed</h3><ul class="detail-technical-list"><li><strong>Platform:</strong> Adafruit IO was used as the cloud IoT service.</li><li><strong>Dashboard:</strong> A dashboard named Smart provides the user-facing control.</li><li><strong>Feed:</strong> A dedicated feed named on carries the bulb command.</li><li><strong>Values:</strong> ON publishes on and OFF publishes off.</li></ul></div>
+        <div class="detail-panel"><h3>Credential Handling</h3><p class="project-overview">The real Adafruit IO username, API key, Wi-Fi name, and Wi-Fi password are intentionally excluded from this portfolio. The code uses placeholders so the architecture can be understood without exposing credentials.</p></div>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Architecture</p><h2>How the Cloud Command Reaches the Bulb</h2></div>
+      <div class="architectural-card detail-panel"><div class="architecture-flow"><span class="flow-node">User / Browser</span><span class="flow-arrow">-&gt;</span><span class="flow-node">Adafruit IO Dashboard</span><span class="flow-arrow">-&gt;</span><span class="flow-node">on Feed</span><span class="flow-arrow">-&gt;</span><span class="flow-node">MQTT Broker</span><span class="flow-arrow">-&gt;</span><span class="flow-node">Wi-Fi / Internet</span><span class="flow-arrow">-&gt;</span><span class="flow-node">ESP32</span><span class="flow-arrow">-&gt;</span><span class="flow-node">GPIO 26</span><span class="flow-arrow">-&gt;</span><span class="flow-node">Relay</span><span class="flow-arrow">-&gt;</span><span class="flow-node">230V AC Bulb</span></div></div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Understanding MQTT</p><h2>Understanding MQTT</h2></div>
+      <div class="two-column-layout">
+        <div class="detail-panel"><h3>Publish / Subscribe Roles</h3><ul class="detail-technical-list"><li><strong>Publisher:</strong> The Adafruit IO dashboard or cloud-side control publishes the command.</li><li><strong>Broker:</strong> The Adafruit IO MQTT broker receives and routes the message.</li><li><strong>Subscriber:</strong> The ESP32 subscribes to the on feed.</li><li><strong>Message:</strong> The payload is on or off.</li></ul></div>
+        <div class="detail-panel"><h3>Why MQTT Fits This IoT Task</h3><ul class="detail-insights-list"><li>Lightweight communication for constrained devices.</li><li>Publish/subscribe architecture separates the dashboard from the device.</li><li>Suitable for low-bandwidth networks.</li><li>Asynchronous message delivery supports remote control.</li><li>Useful for connecting cloud services to physical actuators.</li></ul></div>
+      </div>
+      <div class="project-outcome" style="margin-top: 1rem;"><strong>Command path:</strong> Dashboard -> Publish -> MQTT Broker -> Subscribe -> ESP32.</div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Firmware</p><h2>ESP32 Implementation</h2></div>
+      <p class="project-detail-summary">The ESP32 was programmed in Arduino IDE to connect to Wi-Fi, authenticate with Adafruit IO, subscribe to the on feed, interpret on/off values, and drive GPIO 26. Credentials are placeholders only.</p>
+      <div class="code-block"><pre>#include "AdafruitIO_WiFi.h"
+
+#define WIFI_SSID "YOUR_WIFI_SSID"
+#define WIFI_PASS "YOUR_WIFI_PASSWORD"
+
+#define IO_USERNAME "Abikrishnan"
+#define IO_KEY "YOUR_NEW_ADAFRUIT_IO_KEY"
+
+AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, WIFI_SSID, WIFI_PASS);
+
+#define RELAY_PIN 26
+#define RELAY_ON LOW
+#define RELAY_OFF HIGH
+
+AdafruitIO_Feed *onFeed = io.feed("on");
+
+void handleMessage(AdafruitIO_Data *data)
+{
+  String value = data-&gt;toString();
+  value.trim();
+  value.toLowerCase();
+
+  Serial.print("Received: ");
+  Serial.println(value);
+
+  if (value == "on")
+  {
+    digitalWrite(RELAY_PIN, RELAY_ON);
+    Serial.println("BULB ON");
+  }
+  else if (value == "off")
+  {
+    digitalWrite(RELAY_PIN, RELAY_OFF);
+    Serial.println("BULB OFF");
+  }
+}
+
+void setup()
+{
+  Serial.begin(115200);
+
+  pinMode(RELAY_PIN, OUTPUT);
+  digitalWrite(RELAY_PIN, RELAY_OFF);
+
+  io.connect();
+
+  while (io.status() &lt; AIO_CONNECTED)
+  {
+    Serial.print(".");
+    delay(500);
+  }
+
+  Serial.println();
+  Serial.println("Connected to Adafruit IO!");
+
+  onFeed-&gt;onMessage(handleMessage);
+  onFeed-&gt;get();
+
+  Serial.println("Ready!");
+}
+
+void loop()
+{
+  io.run();
+}</pre></div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Hardware</p><h2>Low-Voltage Control and External Load</h2></div>
+      <div class="two-column-layout">
+        <div class="detail-panel"><h3>Hardware Used</h3><ul class="detail-technical-list"><li>ESP32 development board</li><li>1-channel relay module</li><li>230V AC bulb and bulb holder</li><li>Jumper wires and USB cable</li><li>Wi-Fi network</li></ul></div>
+        <div class="detail-panel"><h3>Control-Side Connections</h3><ul class="detail-technical-list"><li><strong>ESP32 GPIO 26</strong> -> Relay IN</li><li><strong>ESP32 GND</strong> -> Relay GND</li><li><strong>ESP32 supply</strong> -> Relay VCC</li><li>The relay provides the switching interface between the low-voltage GPIO signal and the external load.</li></ul></div>
+      </div>
+      <div class="project-outcome" style="margin-top: 1rem;"><strong>Safety:</strong> 230V AC wiring is hazardous. The mains-side connections must be properly insulated, enclosed, and made using an appropriately rated relay and wiring. Do not handle energized mains wiring.</div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Workflow</p><h2>System Workflow</h2></div>
+      <div class="implementation-timeline">
+        <article class="implementation-step"><div class="step-number">01</div><div><h3>Open the dashboard</h3><p>The user opens the Adafruit IO Smart dashboard.</p></div></article>
+        <article class="implementation-step"><div class="step-number">02</div><div><h3>Press the Bulb toggle</h3><p>The user selects ON or OFF.</p></div></article>
+        <article class="implementation-step"><div class="step-number">03</div><div><h3>Update the on feed</h3><p>The dashboard publishes the selected value to the dedicated feed.</p></div></article>
+        <article class="implementation-step"><div class="step-number">04</div><div><h3>Deliver through MQTT</h3><p>The Adafruit IO MQTT broker routes the command to subscribed clients.</p></div></article>
+        <article class="implementation-step"><div class="step-number">05</div><div><h3>Receive at the ESP32</h3><p>The ESP32 receives the cloud message over Wi-Fi.</p></div></article>
+        <article class="implementation-step"><div class="step-number">06</div><div><h3>Process the value</h3><p>The firmware interprets on or off.</p></div></article>
+        <article class="implementation-step"><div class="step-number">07</div><div><h3>Change GPIO 26</h3><p>The ESP32 changes the relay control output.</p></div></article>
+        <article class="implementation-step"><div class="step-number">08</div><div><h3>Switch the relay</h3><p>The relay changes the load circuit state.</p></div></article>
+        <article class="implementation-step"><div class="step-number">09</div><div><h3>Respond at the bulb</h3><p>The 230V bulb turns ON or OFF according to the command.</p></div></article>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Engineering Process</p><h2>Debugging &amp; Problem Solving</h2></div>
+      <div class="detail-panel"><ul class="detail-technical-list"><li>Verified the ESP32 Wi-Fi connection.</li><li>Verified Adafruit IO authentication.</li><li>Verified the on feed and its dashboard configuration.</li><li>Tested the relay independently before integrating cloud control.</li><li>Confirmed GPIO 26 correctly controlled the relay.</li><li>Checked Serial Monitor output during each test.</li><li>Verified that ON/OFF commands were received from Adafruit IO.</li><li>Identified and corrected the dashboard/feed configuration.</li><li>Verified the final bulb response from the dashboard.</li></ul></div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Testing</p><h2>Testing Results</h2></div>
+      <div class="two-column-layout">
+        <div class="detail-panel"><h3>Functional Test Cases</h3><ul class="detail-technical-list"><li><strong>Test 1:</strong> Dashboard ON -> relay ON and bulb ON.</li><li><strong>Test 2:</strong> Dashboard OFF -> relay OFF and bulb OFF.</li><li><strong>Test 3:</strong> ESP32 reconnects to Wi-Fi -> ESP32 reconnects to Adafruit IO.</li><li><strong>Test 4:</strong> Relay tested independently -> relay switches correctly from GPIO 26.</li></ul></div>
+        <div class="detail-panel"><h3>Serial Monitor Evidence</h3><div class="code-block"><pre>Received: on
+BULB ON
+
+Received: off
+BULB OFF</pre></div></div>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Learning</p><h2>What I Learned</h2></div>
+      <div class="detail-panel"><ul class="detail-insights-list"><li>Cloud-based IoT architecture</li><li>ESP32 Wi-Fi communication</li><li>Adafruit IO feeds and dashboards</li><li>MQTT publish/subscribe architecture</li><li>Remote actuator control</li><li>GPIO-based relay control</li><li>Debugging IoT communication</li><li>Integration of software and hardware</li><li>Safe interfacing between low-voltage electronics and external loads</li></ul></div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Project Outcome</p><h2>From Local Control to Cloud IoT</h2></div>
+      <div class="project-outcome"><strong>Project 2 builds directly on Project 1.</strong> Project 1 established local HTTP control of an ESP32 output. This project adds cloud authentication, an Adafruit IO feed, MQTT messaging, relay interfacing, and remote control of an external load. Together they show a clear progression from embedded GPIO fundamentals to a connected IoT actuator system.</div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>&copy; 2026 Abikrishnan P.</span>
+    <a class="linkedin-footer-link" href="https://www.linkedin.com/in/abi-krishnan-23584b328/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile"><span>Abi Krishnan</span></a>
+  </footer>
+  <script src="js/script.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/cursor.js"></script>
+</body>
+</html>

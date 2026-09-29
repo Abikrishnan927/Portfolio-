@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IoT &amp; Smart Appliance Control | Abikrishnan P.</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="loading-screen"><div class="loading-shell"><div class="loading-bar"></div></div></div>
+  <div class="cursor-glow"></div>
+  <div class="cursor-follower"></div>
+  <div class="progress-bar"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark"></span>Abikrishnan P.</a>
+    <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="experience.html">Experience</a>
+      <a class="active" href="projects.html">Projects</a>
+      <a href="protosem.html">ProtoSem</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="project-detail-page">
+    <nav class="project-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span> / </span><a href="projects.html">Projects</a><span> / </span><a href="projects.html#iot-session">IoT</a><span> / </span><span>Project 3</span>
+    </nav>
+
+    <section class="project-detail-hero reveal">
+      <p class="eyebrow">TASK 03 / VOICE-CONTROLLED IoT</p>
+      <h1>IoT &amp; Smart Appliance Control</h1>
+      <h2>Google Assistant + IFTTT + ESP32 + Relay</h2>
+      <p class="project-detail-summary">I developed a voice-controlled appliance system where spoken commands are handled by a cloud device service and translated into relay-controlled switching by the ESP32.</p>
+      <div class="detail-info-grid">
+        <article class="detail-card"><p class="detail-label">IoT Session</p><h3>Project 3</h3><p>Voice-triggered appliance control</p></article>
+        <article class="detail-card"><p class="detail-label">Firmware Architecture</p><h3>SinricPro</h3><p>Secure WebSocket control to the ESP32</p></article>
+        <article class="detail-card"><p class="detail-label">Actuator</p><h3>GPIO 23</h3><p>Active-LOW relay switching</p></article>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Project 3 / Main Highlight</p><h2>Voice-Based Appliance Control</h2></div>
+      <p class="project-detail-summary">I developed a voice-controlled IoT system where a spoken command becomes an appliance control action. The voice interface connects through a cloud device service to the ESP32 and a physical relay-controlled load.</p>
+      <div class="detail-panel"><h3>Technologies Used</h3><div class="chip-list"><span class="chip">Google Assistant</span><span class="chip">IFTTT</span><span class="chip">ESP32</span><span class="chip">Wi-Fi</span><span class="chip">SinricPro</span><span class="chip">Adafruit IO</span><span class="chip">MQTT</span><span class="chip">Relay</span><span class="chip">Arduino IDE</span><span class="chip">Embedded Systems</span></div></div>
+      <div class="two-column-layout" style="margin-top: 1rem;">
+        <div class="detail-panel"><h3>Documented IFTTT + Adafruit IO Approach</h3><p class="project-overview">The project materials also document an automation route that passes a voice action through IFTTT and an Adafruit IO feed using MQTT.</p><div class="architecture-flow"><span class="flow-node">Google Assistant</span><span class="flow-arrow">-&gt;</span><span class="flow-node">IFTTT</span><span class="flow-arrow">-&gt;</span><span class="flow-node">Adafruit IO</span><span class="flow-arrow">-&gt;</span><span class="flow-node">MQTT</span><span class="flow-arrow">-&gt;</span><span class="flow-node">ESP32</span><span class="flow-arrow">-&gt;</span><span class="flow-node">Relay</span><span class="flow-arrow">-&gt;</span><span class="flow-node">Bulb</span></div></div>
+        <div class="detail-panel"><h3>Actual SinricPro Firmware Architecture</h3><p class="project-overview">The supplied firmware uses SinricPro directly. In this architecture, SinricPro delivers events to the ESP32 over a secure WebSocket connection; it is separate from the IFTTT and MQTT path shown beside it.</p><div class="architecture-flow"><span class="flow-node">Google Assistant</span><span class="flow-arrow">-&gt;</span><span class="flow-node">SinricPro</span><span class="flow-arrow">-&gt;</span><span class="flow-node">Secure WebSocket</span><span class="flow-arrow">-&gt;</span><span class="flow-node">ESP32</span><span class="flow-arrow">-&gt;</span><span class="flow-node">GPIO 23</span><span class="flow-arrow">-&gt;</span><span class="flow-node">Active-LOW Relay</span><span class="flow-arrow">-&gt;</span><span class="flow-node">Appliance</span></div></div>
+      </div>
+      <figure class="photo-card"><img src="images/IOT_Project_3/flowchart.png" alt="Project 3 documented IoT workflow flowchart" loading="lazy" /><figcaption>Project workflow diagram from the Project 3 documentation assets.</figcaption></figure>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Hardware Setup</p><h2>Relay-Controlled Appliance</h2></div>
+      <div class="two-column-layout">
+        <div class="detail-panel"><h3>Documented Components</h3><ul class="detail-technical-list"><li>ESP32 development board</li><li>4-channel relay module</li><li>230V bulb or electrical load</li><li>Wi-Fi network and connecting wires</li><li>Computer with Arduino IDE</li></ul><p class="project-overview">The firmware also uses the ESP32 onboard LED on GPIO 2 as a status indicator.</p></div>
+        <figure class="photo-card"><img src="images/IOT_Project_3/Preparing%20the%20ESP32%20%26%20Exploring%20IFTTT.png" alt="Project 3 ESP32 preparation and IFTTT exploration documentation" loading="lazy" /><figcaption>Project 3 preparation and IFTTT exploration evidence.</figcaption></figure>
+      </div>
+      <div class="project-outcome" style="margin-top: 1rem;"><strong>Electrical safety:</strong> The relay provides electrical switching between the low-voltage ESP32 control system and the connected appliance. Mains-voltage wiring must be handled with appropriate isolation, rated components, and electrical safety practices.</div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">IFTTT Configuration</p><h2>Voice Automation Setup</h2></div>
+      <p class="project-detail-summary">These screenshots document the IFTTT applet, its web request configuration, and an OFF command in the separate IFTTT-to-Adafruit IO workflow.</p>
+      <div class="project-gallery-grid">
+        <figure class="photo-card"><img src="images/IOT_Project_3/Creating%20the%20IFTTT%20Applet.png" alt="Creating the IFTTT applet" loading="lazy" /><figcaption>IFTTT applet creation evidence.</figcaption></figure>
+        <figure class="photo-card"><img src="images/IOT_Project_3/Configuring%20the%20Web%20Request.png" alt="Configuring the IFTTT web request" loading="lazy" /><figcaption>Web request configuration for the documented automation route.</figcaption></figure>
+        <figure class="photo-card"><img src="images/IOT_Project_3/Creating%20the%20OFF%20Command.png" alt="Creating an OFF command in the IFTTT workflow" loading="lazy" /><figcaption>OFF command setup in the IFTTT workflow.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Adafruit IO</p><h2>Cloud Feed Integration</h2></div>
+      <div class="two-column-layout">
+        <div class="detail-panel"><h3>Feed Communication</h3><p class="project-overview">In the IFTTT workflow, Adafruit IO provides the cloud feed endpoint. MQTT carries the feed update toward the subscribed device. This documents a distinct route from the SinricPro firmware architecture.</p><ul class="detail-technical-list"><li>Cloud feed integration</li><li>MQTT publish/subscribe model</li><li>Cloud-to-device state communication</li></ul></div>
+        <figure class="photo-card"><img src="images/IOT_Project_3/Adding%20Ada%20Fruit.png" alt="Adding the Adafruit IO service to the documented workflow" loading="lazy" /><figcaption>Adafruit IO service setup evidence from the project materials.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Voice Trigger</p><h2>Google Assistant Commands</h2></div>
+      <div class="two-column-layout">
+        <div class="detail-panel"><h3>Example Voice Commands</h3><div class="code-block"><pre>"Okay Google, activate lights on"
+
+"Okay Google, activate lights off"</pre></div><p class="project-overview">The configured voice command starts the selected cloud automation or device-service route, which ultimately requests a change to the ESP32-controlled relay state.</p></div>
+        <figure class="photo-card"><img src="images/IOT_Project_3/voice.png" alt="Voice-related IoT project documentation" loading="lazy" /><figcaption>Voice interaction documentation from the Project 3 asset folder.</figcaption></figure>
+      </div>
+      <div class="project-outcome" style="margin-top: 1rem;"><strong>Voice-control path:</strong> Voice command -&gt; Cloud automation or device service -&gt; ESP32 -&gt; GPIO 23 -&gt; Active-LOW relay -&gt; Appliance ON/OFF.</div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Firmware</p><h2>SinricPro ESP32 Implementation</h2></div>
+      <p class="project-detail-summary">The supplied firmware connects the ESP32 to Wi-Fi and SinricPro, registers a switch power-state callback, and calls <code>SinricPro.handle()</code> continuously. The callback drives GPIO 23 LOW for relay ON and HIGH for relay OFF. Credentials below are placeholders.</p>
+      <div class="code-block"><pre>#include &lt;WiFi.h&gt;
+#include &lt;SinricPro.h&gt;
+#include &lt;SinricProSwitch.h&gt;
+
+const char* WIFI_SSID = "YOUR_WIFI_SSID";
+const char* WIFI_PASS = "YOUR_WIFI_PASSWORD";
+
+const char* APP_KEY = "YOUR_SINRICPRO_APP_KEY";
+const char* APP_SECRET = "YOUR_SINRICPRO_APP_SECRET";
+const char* DEVICE_ID_FAN = "YOUR_DEVICE_ID_FOR_FAN";
+
+const int RELAY_PIN_FAN = 23;
+const int STATUS_LED_PIN = 2;
+const int RELAY_ON = LOW;
+const int RELAY_OFF = HIGH;
+
+bool onPowerState(const String &amp;deviceId, bool &amp;state)
+{
+  Serial.println();
+  Serial.println("======================================");
+  Serial.println("Voice Command Received");
+  Serial.println("======================================");
+  Serial.print("Device ID: ");
+  Serial.println(deviceId);
+  Serial.print("Requested State: ");
+
+  if (state)
+  {
+    Serial.println("ON");
+    digitalWrite(RELAY_PIN_FAN, RELAY_ON);
+    digitalWrite(STATUS_LED_PIN, HIGH);
+    Serial.println("Relay: ON");
+    Serial.println("Appliance: ON");
+  }
+  else
+  {
+    Serial.println("OFF");
+    digitalWrite(RELAY_PIN_FAN, RELAY_OFF);
+    digitalWrite(STATUS_LED_PIN, LOW);
+    Serial.println("Relay: OFF");
+    Serial.println("Appliance: OFF");
+  }
+
+  Serial.println("======================================");
+  return true;
+}
+
+void connectWiFi()
+{
+  Serial.println();
+  Serial.println("Connecting to Wi-Fi...");
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
+
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println();
+  Serial.println("Wi-Fi Connected!");
+  Serial.print("IP Address: ");
+  Serial.println(WiFi.localIP());
+  Serial.print("Signal Strength: ");
+  Serial.print(WiFi.RSSI());
+  Serial.println(" dBm");
+}
+
+void setupSinricPro()
+{
+  SinricProSwitch &amp;mySwitch = SinricPro[DEVICE_ID_FAN];
+  mySwitch.onPowerState(onPowerState);
+  SinricPro.begin(APP_KEY, APP_SECRET);
+  Serial.println();
+  Serial.println("SinricPro initialized.");
+  Serial.println("Cloud voice interface is active.");
+}
+
+void setup()
+{
+  Serial.begin(115200);
+  delay(1000);
+
+  Serial.println();
+  Serial.println("======================================");
+  Serial.println(" ESP32 VOICE CONTROLLED APPLIANCE");
+  Serial.println("======================================");
+
+  digitalWrite(RELAY_PIN_FAN, RELAY_OFF);
+  pinMode(RELAY_PIN_FAN, OUTPUT);
+  digitalWrite(RELAY_PIN_FAN, RELAY_OFF);
+
+  pinMode(STATUS_LED_PIN, OUTPUT);
+  digitalWrite(STATUS_LED_PIN, LOW);
+  Serial.println("Relay initialized: OFF");
+  Serial.println("Status LED initialized: OFF");
+
+  connectWiFi();
+  setupSinricPro();
+  Serial.println();
+  Serial.println("======================================");
+  Serial.println("System Ready");
+  Serial.println("======================================");
+}
+
+void loop()
+{
+  SinricPro.handle();
+
+  if (WiFi.status() != WL_CONNECTED)
+  {
+    Serial.println("Wi-Fi connection lost.");
+    connectWiFi();
+  }
+
+  delay(10);
+}</pre></div>
+      <div class="two-column-layout" style="margin-top: 1rem;">
+        <div class="detail-panel"><h3>Power-State Callback</h3><p class="project-overview"><code>onPowerState(const String &amp;deviceId, bool &amp;state)</code> receives the requested switch state. It updates relay GPIO 23 and the onboard status LED, then returns <code>true</code> to report the command handled.</p></div>
+        <div class="detail-panel"><h3>Active-LOW Relay Logic</h3><ul class="detail-technical-list"><li><strong>LOW:</strong> Relay ON, appliance ON</li><li><strong>HIGH:</strong> Relay OFF, appliance OFF</li><li>The relay output is initialized OFF before normal operation.</li><li><code>SinricPro.handle()</code> processes cloud events in the main loop.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Testing &amp; Debugging</p><h2>Verification Evidence</h2></div>
+      <div class="two-column-layout">
+        <div class="detail-panel"><h3>Firmware Checks</h3><ul class="detail-technical-list"><li>Serial output reports the received device ID and requested ON/OFF state.</li><li>Relay GPIO 23 is set according to active-LOW logic.</li><li>The onboard status LED on GPIO 2 follows the requested state.</li><li>Wi-Fi status is checked in the main loop and reconnection is attempted if disconnected.</li></ul></div>
+        <figure class="photo-card"><img src="images/IOT_Project_3/Testing%20and%20Debugging.png" alt="Project 3 testing and debugging evidence" loading="lazy" /><figcaption>Testing and debugging evidence from the Project 3 documentation.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Results</p><h2>Implementation Results</h2></div>
+      <div class="detail-panel"><ul class="detail-technical-list"><li>The SinricPro power-state callback maps an ON command to GPIO 23 LOW and an OFF command to GPIO 23 HIGH.</li><li>The onboard status LED on GPIO 2 mirrors the requested appliance state.</li><li>Serial output reports the device ID, requested state, and relay response for debugging.</li><li>The main loop services SinricPro events and attempts Wi-Fi reconnection if the connection drops.</li><li>Project evidence includes the supplied testing/debugging screenshot and local voice-control demonstration video.</li></ul></div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Key Technical Points</p><h2>IoT Concepts Applied</h2></div>
+      <div class="detail-panel"><ul class="detail-insights-list"><li>ESP32 as the edge device for voice-triggered appliance control</li><li>Wi-Fi connection and SinricPro cloud integration over a secure WebSocket</li><li>Separate IFTTT, Adafruit IO, and MQTT automation path documented in the project materials</li><li>Power-state callback controlling GPIO 23</li><li>Active-LOW relay operation and safe OFF initialization</li><li>Wi-Fi reconnection and hardware/software debugging</li></ul></div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">What I Learned</p><h2>What I Learned</h2></div>
+      <div class="detail-panel"><ul class="detail-insights-list"><li>I implemented a voice-triggered control path from a cloud service to an ESP32 relay.</li><li>I distinguished the documented IFTTT/Adafruit IO/MQTT workflow from the supplied SinricPro firmware.</li><li>I learned how a power-state callback maps a cloud command to GPIO output.</li><li>I understood active-LOW relay logic, safe initialization, and Wi-Fi reconnection.</li><li>I learned that reliable appliance control depends on both firmware behavior and safe hardware integration.</li></ul></div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Reflection</p><h2>Reflection</h2></div>
+      <div class="project-outcome">Building this voice-controlled appliance system showed me how a spoken request can cross a cloud service boundary and become a physical output change. Documenting the separate IFTTT/Adafruit IO/MQTT route alongside the supplied SinricPro firmware also made the distinction between automation paths clear. Reliable operation depends on the callback, Wi-Fi connectivity, relay initialization, and careful electrical integration working together.</div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Project Outcome</p><h2>Voice Command to Appliance</h2></div>
+      <div class="project-outcome"><strong>Project 3 implements a voice-triggered appliance control path.</strong> The SinricPro firmware receives power-state events, applies active-LOW relay logic on GPIO 23, and mirrors the state on the onboard LED. The project materials also document IFTTT with Adafruit IO and MQTT as a separate integration approach.</div>
+    </section>
+
+    <section class="project-detail-section reveal">
+      <div class="section-heading"><p class="eyebrow">Video Demonstration</p><h2>IoT Project 3 – Voice Control Demonstration</h2></div>
+      <p class="project-detail-summary">This demonstration shows the voice-controlled appliance workflow, including the voice trigger, cloud communication, ESP32 response, relay switching, and appliance control.</p>
+      <div class="project-video-box"><video controls preload="metadata" playsinline poster="images/IOT_Project_3/Preparing%20the%20ESP32%20%26%20Exploring%20IFTTT.png"><source src="images/IOT_Project_3/Video%20demonstration.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>&copy; 2026 Abikrishnan P.</span>
+    <a class="linkedin-footer-link" href="https://www.linkedin.com/in/abi-krishnan-23584b328/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile"><span>Abi Krishnan</span></a>
+  </footer>
+  <script src="js/script.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/cursor.js"></script>
+</body>
+</html>
