@@ -95,128 +95,134 @@
     </section>
 
     <section class="project-detail-section reveal">
-      <div class="section-heading"><p class="eyebrow">Firmware</p><h2>SinricPro ESP32 Implementation</h2></div>
-      <p class="project-detail-summary">The supplied firmware connects the ESP32 to Wi-Fi and SinricPro, registers a switch power-state callback, and calls <code>SinricPro.handle()</code> continuously. The callback drives GPIO 23 LOW for relay ON and HIGH for relay OFF. Credentials below are placeholders.</p>
+      <div class="section-heading"><p class="eyebrow">Firmware</p><h2>Adafruit MQTT ESP32 Implementation</h2></div>
+      <p class="project-detail-summary">The ESP32 connects to Wi-Fi, subscribes to the Adafruit IO <code>bulb</code> feed over MQTT, and drives GPIO 23 from the received ON/OFF command. The relay is active-LOW, and all account and network credentials are placeholders.</p>
       <div class="code-block"><pre>#include &lt;WiFi.h&gt;
-#include &lt;SinricPro.h&gt;
-#include &lt;SinricProSwitch.h&gt;
+#include "Adafruit_MQTT.h"
+#include "Adafruit_MQTT_Client.h"
 
-const char* WIFI_SSID = "YOUR_WIFI_SSID";
-const char* WIFI_PASS = "YOUR_WIFI_PASSWORD";
+#define WIFI_SSID       "YOUR_WIFI_NAME"
+#define WIFI_PASSWORD   "YOUR_WIFI_PASSWORD"
 
-const char* APP_KEY = "YOUR_SINRICPRO_APP_KEY";
-const char* APP_SECRET = "YOUR_SINRICPRO_APP_SECRET";
-const char* DEVICE_ID_FAN = "YOUR_DEVICE_ID_FOR_FAN";
+#define AIO_SERVER      "io.adafruit.com"
+#define AIO_SERVERPORT  1883
 
-const int RELAY_PIN_FAN = 23;
-const int STATUS_LED_PIN = 2;
-const int RELAY_ON = LOW;
-const int RELAY_OFF = HIGH;
+#define AIO_USERNAME    "YOUR_ADAFRUIT_USERNAME"
+#define AIO_KEY         "YOUR_ADAFRUIT_AIO_KEY"
 
-bool onPowerState(const String &amp;deviceId, bool &amp;state)
-{
+#define RELAY_PIN       23
+
+WiFiClient client;
+
+Adafruit_MQTT_Client mqtt(
+  &amp;client,
+  AIO_SERVER,
+  AIO_SERVERPORT,
+  AIO_USERNAME,
+  AIO_KEY
+);
+
+Adafruit_MQTT_Subscribe bulbFeed =
+  Adafruit_MQTT_Subscribe(
+    &amp;mqtt,
+    AIO_USERNAME "/feeds/bulb"
+  );
+
+void connectWiFi() {
+
   Serial.println();
-  Serial.println("======================================");
-  Serial.println("Voice Command Received");
-  Serial.println("======================================");
-  Serial.print("Device ID: ");
-  Serial.println(deviceId);
-  Serial.print("Requested State: ");
+  Serial.print("Connecting to Wi-Fi");
 
-  if (state)
-  {
-    Serial.println("ON");
-    digitalWrite(RELAY_PIN_FAN, RELAY_ON);
-    digitalWrite(STATUS_LED_PIN, HIGH);
-    Serial.println("Relay: ON");
-    Serial.println("Appliance: ON");
-  }
-  else
-  {
-    Serial.println("OFF");
-    digitalWrite(RELAY_PIN_FAN, RELAY_OFF);
-    digitalWrite(STATUS_LED_PIN, LOW);
-    Serial.println("Relay: OFF");
-    Serial.println("Appliance: OFF");
-  }
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-  Serial.println("======================================");
-  return true;
-}
-
-void connectWiFi()
-{
-  Serial.println();
-  Serial.println("Connecting to Wi-Fi...");
-  WiFi.begin(WIFI_SSID, WIFI_PASS);
-
-  while (WiFi.status() != WL_CONNECTED)
-  {
+  while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
 
   Serial.println();
   Serial.println("Wi-Fi Connected!");
-  Serial.print("IP Address: ");
+
+  Serial.print("ESP32 IP Address: ");
   Serial.println(WiFi.localIP());
-  Serial.print("Signal Strength: ");
-  Serial.print(WiFi.RSSI());
-  Serial.println(" dBm");
 }
 
-void setupSinricPro()
-{
-  SinricProSwitch &amp;mySwitch = SinricPro[DEVICE_ID_FAN];
-  mySwitch.onPowerState(onPowerState);
-  SinricPro.begin(APP_KEY, APP_SECRET);
-  Serial.println();
-  Serial.println("SinricPro initialized.");
-  Serial.println("Cloud voice interface is active.");
+void MQTT_connect() {
+
+  if (mqtt.connected()) {
+    return;
+  }
+
+  Serial.print("Connecting to Adafruit IO... ");
+
+  int8_t ret;
+
+  while ((ret = mqtt.connect()) != 0) {
+
+    Serial.println(mqtt.connectErrorString(ret));
+
+    mqtt.disconnect();
+
+    delay(5000);
+
+    Serial.print("Retrying...");
+  }
+
+  Serial.println("Connected!");
 }
 
-void setup()
-{
+void setup() {
+
   Serial.begin(115200);
-  delay(1000);
 
-  Serial.println();
-  Serial.println("======================================");
-  Serial.println(" ESP32 VOICE CONTROLLED APPLIANCE");
-  Serial.println("======================================");
-
-  digitalWrite(RELAY_PIN_FAN, RELAY_OFF);
-  pinMode(RELAY_PIN_FAN, OUTPUT);
-  digitalWrite(RELAY_PIN_FAN, RELAY_OFF);
-
-  pinMode(STATUS_LED_PIN, OUTPUT);
-  digitalWrite(STATUS_LED_PIN, LOW);
-  Serial.println("Relay initialized: OFF");
-  Serial.println("Status LED initialized: OFF");
+  digitalWrite(RELAY_PIN, HIGH);
+  pinMode(RELAY_PIN, OUTPUT);
 
   connectWiFi();
-  setupSinricPro();
-  Serial.println();
-  Serial.println("======================================");
-  Serial.println("System Ready");
-  Serial.println("======================================");
+
+  mqtt.subscribe(&amp;bulbFeed);
+
+  MQTT_connect();
+
+  Serial.println("System Ready!");
 }
 
-void loop()
-{
-  SinricPro.handle();
+void loop() {
 
-  if (WiFi.status() != WL_CONNECTED)
-  {
-    Serial.println("Wi-Fi connection lost.");
+  if (WiFi.status() != WL_CONNECTED) {
     connectWiFi();
   }
 
-  delay(10);
+  MQTT_connect();
+
+  Adafruit_MQTT_Subscribe *subscription;
+
+  while ((subscription = mqtt.readSubscription(5000))) {
+
+    if (subscription == &amp;bulbFeed) {
+
+      Serial.print("Received: ");
+      Serial.println((char *)bulbFeed.lastread);
+
+      if (strcmp((char *)bulbFeed.lastread, "ON") == 0) {
+
+        digitalWrite(RELAY_PIN, LOW);
+
+        Serial.println("Relay ON");
+      }
+
+      else if (strcmp((char *)bulbFeed.lastread, "OFF") == 0) {
+
+        digitalWrite(RELAY_PIN, HIGH);
+
+        Serial.println("Relay OFF");
+      }
+    }
+  }
 }</pre></div>
       <div class="two-column-layout" style="margin-top: 1rem;">
         <div class="detail-panel"><h3>Power-State Callback</h3><p class="project-overview"><code>onPowerState(const String &amp;deviceId, bool &amp;state)</code> receives the requested switch state. It updates relay GPIO 23 and the onboard status LED, then returns <code>true</code> to report the command handled.</p></div>
-        <div class="detail-panel"><h3>Active-LOW Relay Logic</h3><ul class="detail-technical-list"><li><strong>LOW:</strong> Relay ON, appliance ON</li><li><strong>HIGH:</strong> Relay OFF, appliance OFF</li><li>The relay output is initialized OFF before normal operation.</li><li><code>SinricPro.handle()</code> processes cloud events in the main loop.</li></ul></div>
+        <div class="detail-panel"><h3>Active-LOW Relay Logic</h3><ul class="detail-technical-list"><li><strong>LOW:</strong> Relay ON, appliance ON</li><li><strong>HIGH:</strong> Relay OFF, appliance OFF</li><li>The relay output is initialized OFF before normal operation.</li><li><code>mqtt.readSubscription()</code> processes cloud messages in the main loop.</li></ul></div>
       </div>
     </section>
 
